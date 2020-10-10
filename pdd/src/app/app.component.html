@@ -1,0 +1,8 @@
+<app-scrollable-tap [menus]='TopMenus' (tabSelected)='handleTabSelected($event)' [backgroundColor]="backgroundColor" [titleColor]="titleColor"
+  tilteActiveColor="yellow" indicatorColor="yellow" *ngIf="backgroundColor === 'red'">
+  <div class="div">DIV-DIV</div>
+  <p>PPPP</p>
+  <em>EM-EM---我是其他的元素</em>
+</app-scrollable-tap>
+
+<app-image-slider [sliders]='imageSliders'></app-image-slider>
