@@ -1,4 +1,5 @@
 {
   "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": null
+  "editor.codeActionsOnSave": null,
+  "beautify.ignore": ""
 }
