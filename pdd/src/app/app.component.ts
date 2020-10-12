@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { TopMenu, ImageSlider } from './components';
+import { AfterViewInit, Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { TopMenu, ImageSlider, ImageSliderComponent } from './components';
 
 interface Dict {
   [key: string]: string;
@@ -10,7 +10,7 @@ interface Dict {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css', 'app.addStyle.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'pinduoduo';
   backgroundColor = 'red';
   titleColor = '#fff'
@@ -121,6 +121,19 @@ export class AppComponent {
       caption: ''
     }
   ]
+  @ViewChild(ImageSliderComponent) imageSlider: ImageSliderComponent;  // 也可以用别名，组件的类型或者指令directive
+  constructor() {
+
+  }
+
+  ngOnInit(): void {
+    console.log('ngOnInit');
+  }
+
+  ngAfterViewInit(): void {
+    // console.log('imageSlider', this.imageSlider.el.nativeElement); // 属性“el”为私有属性，只能在类“ImageSliderComponent”中访问。
+    console.log('imageSlider', this.imageSlider);
+  }
 
   handleTabSelected(m) {
     console.log(m);

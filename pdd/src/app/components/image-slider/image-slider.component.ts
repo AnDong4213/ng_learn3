@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, ViewChild, ElementRef, ViewChildren, QueryList, Renderer2 } from '@angular/core';
 
 export interface ImageSlider {
   imgUrl: string;
@@ -11,17 +11,27 @@ export interface ImageSlider {
   templateUrl: './image-slider.component.html',
   styleUrls: ['./image-slider.component.css']
 })
-export class ImageSliderComponent implements OnInit {
+export class ImageSliderComponent implements OnInit, AfterViewInit {
   @Input() sliders: ImageSlider[] = [];
   @ViewChild('imageSlider', {static: true}) imgSlider: ElementRef;
+  @ViewChildren('img') imgs: QueryList<ElementRef>;
 
   constructor(
-    private el: ElementRef
+    private el: ElementRef,
+    private rd2: Renderer2
   ) { }
 
   ngOnInit() {
     console.log('sliders', this.imgSlider.nativeElement);
-    console.log(this.el.nativeElement.querySelector('.nav-section'));
+    console.log(this.el.nativeElement.querySelector('.image-slider'));
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.imgs);
+    this.imgs.forEach((dom) => {
+      // dom.nativeElement.style.height = '100px';
+      this.rd2.setStyle(dom.nativeElement, 'height', '100px');
+    });
   }
 
 }
