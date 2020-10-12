@@ -5,7 +5,11 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
-import { TopMenu, ImageSlider, ImageSliderComponent } from './components';
+import {
+  TopMenu,
+  ImageSlider,
+  ImageSliderComponent,
+} from './shared/components';
 
 interface Dict {
   [key: string]: string;
@@ -20,6 +24,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   title = 'pinduoduo';
   backgroundColor = 'pink';
   titleColor = '#fff';
+  username4 = 'ww';
   dict: Dict = {
     a: '9',
     b: 'b',
