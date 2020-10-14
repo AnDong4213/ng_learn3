@@ -16,4 +16,11 @@
   [value]="username4"
   (input)="username4 = $event.target.value"
 />
-<p>{{ username4 }}</p>
+<p (click)="handleClick()">{{ username4 }}</p>
+
+{{ result }}
+
+<span appGridItem *ngFor="let item of channels">
+  <img [src]="item.icon" alt="" appGridItemImage="2rem" [fitMode]="'cover'" />
+  <span appGridItemTitle="0.6rem" class="title">{{ item.title }}</span>
+</span>
