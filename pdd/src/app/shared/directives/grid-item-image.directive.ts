@@ -1,4 +1,11 @@
-import { Directive, OnInit, Input, ElementRef, Renderer2 } from '@angular/core';
+import {
+  Directive,
+  OnInit,
+  Input,
+  ElementRef,
+  Renderer2,
+  HostListener,
+} from '@angular/core';
 
 @Directive({
   selector: '[appGridItemImage]',
@@ -18,5 +25,10 @@ export class GridItemImageDirective implements OnInit {
 
   private setStyle(styleName: string, styleValue: string | number) {
     this.renderer.setStyle(this.elr.nativeElement, styleName, styleValue);
+  }
+
+  @HostListener('click', ['$event.target'])
+  handleClick(ev) {
+    console.log('ev', ev);
   }
 }

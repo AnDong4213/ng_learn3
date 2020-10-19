@@ -1,26 +1,46 @@
-<input
-  type="text"
-  [value]="username"
-  (input)="username = $event.target.value"
-/>
-<p>{{ username }}</p>
+<!-- <div>
+  <input
+    type="text"
+    [value]="username"
+    (input)="username = $event.target.value"
+  />
+  <p>{{ username }}</p>
 
-<input type="text" [(ngModel)]="username2" />
-<p>{{ username2 }}</p>
+  <input type="text" [(ngModel)]="username2" />
+  <p>{{ username2 }}</p>
 
-<input type="text" [ngModel]="username3" (ngModelChange)="username3 = $event" />
-<p>{{ username3 }}</p>
+  <input
+    type="text"
+    [ngModel]="username3"
+    (ngModelChange)="username3 = $event"
+  />
+  <p>{{ username3 }}</p>
 
-<input
-  type="text"
-  [value]="username4"
-  (input)="username4 = $event.target.value"
-/>
-<p (click)="handleClick()">{{ username4 }}</p>
+  <input
+    type="text"
+    [value]="username4"
+    (input)="username4 = $event.target.value"
+  />
+  <p (click)="handleClick()">{{ username4 }}</p>
 
-{{ result }}
+  {{ result }}
+</div> -->
 
-<span appGridItem *ngFor="let item of channels">
+<!-- <span appGridItem *ngFor="let item of channels">
   <img [src]="item.icon" alt="" appGridItemImage="2rem" [fitMode]="'cover'" />
   <span appGridItemTitle="0.6rem" class="title">{{ item.title }}</span>
-</span>
+</span> -->
+
+<div
+  class="container"
+  [ngStyle]="{
+    'grid-template-rows': templateRows,
+    'grid-template-columns': templateColumns
+  }"
+  (scroll)="handleScroll($event)"
+>
+  <ng-content select="[appGridItem]"></ng-content>
+</div>
+<div class="underline" *ngIf="scrollable">
+  <div class="highlight" [ngStyle]="{ margin: sliderMargin }"></div>
+</div>
