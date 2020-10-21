@@ -4,20 +4,12 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { AppRoutingModule } from './app-routing.module';
-import { HomeModule } from './home';
 
 @NgModule({
   // 声明我这个模块有哪些组件
   declarations: [AppComponent],
   // 我这个模块依赖什么其他模块
-  imports: [
-    BrowserModule,
-    FormsModule,
-    SharedModule,
-    AppRoutingModule,
-    HomeModule,
-  ],
+  imports: [BrowserModule, FormsModule, SharedModule],
   providers: [],
   entryComponents: [],
   // 引导组件是什么，首先呈现出来的页面是哪个

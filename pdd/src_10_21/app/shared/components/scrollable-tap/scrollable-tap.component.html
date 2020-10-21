@@ -1,0 +1,23 @@
+<ul [ngStyle]='{backgroundColor: backgroundColor}'>
+  <li *ngFor="
+      let menu of menus;
+      let even = even;
+      let odd = odd;
+      let i = index;
+      first as f;
+      count as all;
+      trackBy: trackByFn
+    " [ngClass]='{even: even, odd: odd}'>
+    <!-- <a href="#" [class.active]="i === selectedIndex" (click)="handleSelection(i, menu)">{{ menu.title }}</a> -->
+    <a href="#" [ngStyle]="{ color: i === selectedIndex ? titleActiveColor : titleColor }"
+      (click)="handleSelection(i, menu)">{{ menu.title }}</a>
+    <span class="indicator" [ngStyle]="{ backgroundColor: indicatorColor }" *ngIf="i === selectedIndex"></span>
+  </li>
+  <!-- <ng-template #elseTemp>
+    <span class="indicator2"></span>
+  </ng-template> -->
+</ul>
+<ng-content select='p'></ng-content>
+<ng-content select='.div'></ng-content>
+<ng-content></ng-content>
+

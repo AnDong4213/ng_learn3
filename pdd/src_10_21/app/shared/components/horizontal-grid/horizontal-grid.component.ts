@@ -1,7 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Emoji, Confirmable } from '../../decorators/index';
-// import { Md5 } from 'ts-md5/dist/md5';
-import { Md5 } from './../../../utils/md5';
 
 export interface Channel {
   id: number;
@@ -30,9 +28,7 @@ export class HorizontalGridComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    // console.log('password', Md5.hashStr('password').toString());
-  }
+  ngOnInit() {}
 
   @Input()
   public get username4() {
