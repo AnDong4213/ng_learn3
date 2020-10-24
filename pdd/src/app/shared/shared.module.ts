@@ -7,6 +7,7 @@ import {
   ImageSliderComponent,
   ScrollableTapComponent,
 } from './components';
+import { AgoPipe } from './pipes';
 
 import {
   GridItemDirective,
@@ -22,6 +23,7 @@ import {
     GridItemDirective,
     GridItemTitleDirective,
     GridItemImageDirective,
+    AgoPipe,
   ],
   imports: [CommonModule, FormsModule],
   exports: [
@@ -33,6 +35,7 @@ import {
     GridItemDirective,
     GridItemTitleDirective,
     GridItemImageDirective,
+    AgoPipe,
   ],
 })
 export class SharedModule {}

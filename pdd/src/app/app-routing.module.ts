@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeContainerComponent, HomeDetailComponent } from './home';
+// import { HomeContainerComponent, HomeDetailComponent } from './home';
 
-const routes: Routes = [
+/* const routes: Routes = [
   {
     path: 'home',
     component: HomeContainerComponent,
@@ -20,7 +20,8 @@ const routes: Routes = [
   },
   // { path: 'path', component: FeatureComponent },
   // { path: '**', component: PageNotFoundComponent },
-];
+]; */
+const routes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

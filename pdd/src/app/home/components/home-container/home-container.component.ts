@@ -121,7 +121,7 @@ export class HomeContainerComponent implements OnInit, AfterViewInit {
   }
 
   handleTabSelected(tap: TopMenu) {
-    console.log(tap);
+    // console.log(tap);
     /* let colors = ['red', 'pink', 'blue'];
     let ids = Math.floor(Math.random() * 3);
     this.backgroundColor = colors[ids]; */

@@ -1,11 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home';
+
+import localZh from '@angular/common/locales/zh-Hans';
+import { registerLocaleData } from '@angular/common';
 
 @NgModule({
   // 声明我这个模块有哪些组件
@@ -20,9 +23,18 @@ import { HomeModule } from './home';
     // 才能使子路由导入进来，路由也才可以成功
     HomeModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'zh-Hans',
+    },
+  ],
   entryComponents: [],
   // 引导组件是什么，首先呈现出来的页面是哪个
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    registerLocaleData(localZh, 'zh');
+  }
+}

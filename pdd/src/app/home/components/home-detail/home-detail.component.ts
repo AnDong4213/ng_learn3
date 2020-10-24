@@ -162,12 +162,22 @@ export class HomeDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
-      console.log(params);
+      // console.log(params);
       this.selectedTabLink = params.get('tabLink');
     });
 
     this.route.queryParamMap.subscribe((params) => {
-      console.log('查询参数', params);
+      // console.log('查询参数', params);
     });
+
+    this.route.url.subscribe((params) => {
+      // console.log('url', params[0]);
+    });
+
+    this.route.data.subscribe((params) => {
+      // console.log(' data', params);
+    });
+
+    // console.log('children', this.route.children);
   }
 }
