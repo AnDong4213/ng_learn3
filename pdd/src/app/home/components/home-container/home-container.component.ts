@@ -1,7 +1,14 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  Inject,
+} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { TopMenu, ImageSliderComponent } from 'src/app/shared/components';
+import { HomeService, token } from '../../services';
 
 interface Dict {
   [key: string]: string;
@@ -20,99 +27,23 @@ export class HomeContainerComponent implements OnInit, AfterViewInit {
     a: '9',
     b: 'b',
   };
-  TopMenus: TopMenu[] = [
-    {
-      title: '热门',
-      link: 'hot',
-      id: 1,
-    },
-    {
-      id: 2,
-      title: '男装',
-      link: 'men',
-    },
-    {
-      id: 3,
-      title: '百货',
-      link: 'department',
-    },
-    {
-      id: 4,
-      title: '运动',
-      link: 'sports',
-    },
-    {
-      id: 5,
-      title: '手机',
-      link: 'mobile',
-    },
-    {
-      id: 6,
-      title: '家纺',
-      link: 'textile',
-    },
-    {
-      id: 7,
-      title: '食品',
-      link: 'food',
-    },
-    {
-      id: 8,
-      title: '电器',
-      link: 'appliance',
-    },
-    {
-      id: 9,
-      title: '鞋包',
-      link: 'shoes',
-    },
-    {
-      id: 10,
-      title: '汽车',
-      link: 'cars',
-    },
-    {
-      id: 11,
-      title: '水果',
-      link: 'fruits',
-    },
-    {
-      id: 12,
-      title: '电脑',
-      link: 'computers',
-    },
-    {
-      id: 13,
-      title: '内衣',
-      link: 'underwears',
-    },
-    {
-      id: 14,
-      title: '家装',
-      link: 'home',
-    },
-    {
-      id: 15,
-      title: '母婴',
-      link: 'baby',
-    },
-    {
-      id: 16,
-      title: '美妆',
-      link: 'makeup',
-    },
-    {
-      id: 17,
-      title: '家具',
-      link: 'furnitures',
-    },
-  ];
+  TopMenus: TopMenu[] = [];
 
   @ViewChild(ImageSliderComponent) imageSlider: ImageSliderComponent; // 也可以用别名，组件的类型或者指令directive
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private service: HomeService,
+
+    // `@Inject` 这个注解用于找到可注入的标识，
+    // 也就是 provide 的那个标识
+    @Inject(token) private baseUrl: string
+  ) {}
 
   ngOnInit(): void {
     // console.log('ngOnInit');
+    this.TopMenus = this.service.getTabs();
+
+    console.log(this.baseUrl);
   }
 
   ngAfterViewInit(): void {

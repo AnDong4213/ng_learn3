@@ -1,12 +1,19 @@
-import { Component, OnInit, Injectable, Injector } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Injectable,
+  Injector,
+  Inject,
+  InjectionToken,
+} from '@angular/core';
 
 // 这个注解说，我这个类是可以注入的
 @Injectable()
 class Product {
   constructor(
-    private name: string,
-    private model: string,
-    private color: string
+    @Inject(String) private name: string,
+    @Inject(String) private model: string,
+    @Inject(String) private color: string
   ) {}
 }
 
@@ -39,6 +46,8 @@ export class HomeGrandComponent implements OnInit {
     this.price = 11123.23;
     // console.log(+new Date());
 
+    const token = new InjectionToken<string>('baseUrl');
+
     const injector = Injector.create({
       // 在providers数组里描述这些东西用该怎样被创建
       providers: [
@@ -54,11 +63,16 @@ export class HomeGrandComponent implements OnInit {
           useClass: PurchaseOrder,
           deps: [Product],
         },
+        {
+          provide: token,
+          useValue: 'http://localhost1',
+        },
       ],
     });
 
     console.log(injector.get(Product));
     console.log(injector.get(PurchaseOrder));
+    console.log(injector.get(token));
   }
 
   minusDays(date: Date, days: number) {
