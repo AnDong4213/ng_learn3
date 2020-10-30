@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ImageSlider, Channel } from 'src/app/shared/components';
@@ -8,6 +13,7 @@ import { HomeService } from '../../services';
   selector: 'app-home-detail',
   templateUrl: './home-detail.component.html',
   styleUrls: ['./home-detail.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeDetailComponent implements OnInit {
   username4 = 'ww';
@@ -15,12 +21,17 @@ export class HomeDetailComponent implements OnInit {
   imageSliders: ImageSlider[] = [];
 
   channels: Channel[] = [];
-  constructor(private route: ActivatedRoute, private service: HomeService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private service: HomeService,
+    private cd: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       // console.log(params);
       this.selectedTabLink = params.get('tabLink');
+      this.cd.markForCheck();
     });
 
     this.route.queryParamMap.subscribe((params) => {

@@ -5,6 +5,7 @@ import {
   HomeDetailComponent,
   HomeGrandComponent,
   HomeAuxComponent,
+  ParentComponent,
 } from './components';
 
 const routes: Routes = [
@@ -39,6 +40,11 @@ const routes: Routes = [
     ],
   },
   // { path: '**', component: PageNotFoundComponent },
+  {
+    path: 'change-detection',
+    pathMatch: 'full',
+    component: ParentComponent,
+  },
 ];
 
 @NgModule({

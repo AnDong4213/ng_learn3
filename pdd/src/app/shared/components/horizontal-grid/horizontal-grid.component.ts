@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { Emoji, Confirmable } from '../../decorators/index';
 // import { Md5 } from 'ts-md5/dist/md5';
 import { Md5 } from './../../../utils/md5';
@@ -14,6 +21,7 @@ export interface Channel {
   selector: 'app-horizontal-grid',
   templateUrl: './horizontal-grid.component.html',
   styleUrls: ['./horizontal-grid.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HorizontalGridComponent implements OnInit {
   username = '';

@@ -12,6 +12,7 @@ import {
   AfterViewInit,
   AfterViewChecked,
   OnDestroy,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 
 export interface TopMenu {
@@ -24,7 +25,15 @@ export interface TopMenu {
   selector: 'app-scrollable-tap',
   templateUrl: './scrollable-tap.component.html',
   styleUrls: ['./scrollable-tap.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
+/**
+ * 接口是可选的，也就说只要有类似 ngOnInit 这样的方法存在
+ * 生命周期的钩子函数还是正常执行
+ * 但建议实现接口，好处一个是不会由于误删除某个钩子函数
+ * 另一个是对组件涉及到哪些生命周期一目了然
+ */
 export class ScrollableTapComponent
   implements
     OnInit,
@@ -80,6 +89,7 @@ export class ScrollableTapComponent
   }
 
   ngAfterViewInit(): void {
+    // this.selectedIndex = 6;  不应该在ngAfterViewInit和ngAfterViewChecked这两个生命周期改变值，死循环
     // console.log('当 Angular 初始化完组件视图及其子视图或包含该指令的视图之后调用');
   }
 

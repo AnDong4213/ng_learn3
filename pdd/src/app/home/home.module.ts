@@ -8,6 +8,7 @@ import {
   HomeGrandComponent,
   HomeAuxComponent,
   ChildComponent,
+  ParentComponent,
 } from './components';
 import { HomeService, token } from './services';
 
@@ -18,6 +19,7 @@ import { HomeService, token } from './services';
     HomeGrandComponent,
     HomeAuxComponent,
     ChildComponent,
+    ParentComponent,
   ],
   providers: [
     // 传统写法，如果采用这种写法，就不能在 service 中写 `providedIn`

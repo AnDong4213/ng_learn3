@@ -1,3 +1,6 @@
-<p>
-  child works!
-</p>
+<span [textContent]="title"></span>
+<span [textContent]="time | date: 'HH:mm:ss: SSS'"></span>
+<p>child works!</p>
+<button (click)="handleClick()">脏值监测</button>
+
+<span #timeRef></span>
