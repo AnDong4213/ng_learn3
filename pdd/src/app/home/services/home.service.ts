@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ImageSlider, Channel, TopMenu } from 'src/app/shared/components';
 
@@ -250,7 +251,7 @@ export class HomeService {
     },
   ];
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   getTabs() {
     return this.TopMenus;

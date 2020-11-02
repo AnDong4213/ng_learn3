@@ -6,8 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'antd';
-
-  time: Date | null = null;
-  defaultOpenValue = new Date(0, 0, 0, 0, 0, 0);
+  title = 'antdauto';
 }

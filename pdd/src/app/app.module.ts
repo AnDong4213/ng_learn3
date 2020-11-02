@@ -1,14 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeModule } from './home';
 
 import localZh from '@angular/common/locales/zh-Hans';
 import { registerLocaleData } from '@angular/common';
+
+import { HomeModule } from './home';
 
 @NgModule({
   // 声明我这个模块有哪些组件
@@ -19,6 +21,7 @@ import { registerLocaleData } from '@angular/common';
     FormsModule,
     SharedModule,
     AppRoutingModule,
+    HttpClientModule,
     // 注意如果不是懒加载，一定要在根模块中导入功能模块
     // 才能使子路由导入进来，路由也才可以成功
     HomeModule,
