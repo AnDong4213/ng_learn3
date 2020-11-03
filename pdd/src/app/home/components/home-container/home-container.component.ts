@@ -4,8 +4,10 @@ import {
   AfterViewInit,
   ViewChild,
   Inject,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { TopMenu, ImageSliderComponent } from 'src/app/shared/components';
 import { HomeService, token } from '../../services';
@@ -18,6 +20,7 @@ interface Dict {
   selector: 'app-home-container',
   templateUrl: './home-container.component.html',
   styleUrls: ['./home-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeContainerComponent implements OnInit, AfterViewInit {
   title = 'pinduoduo';
@@ -27,7 +30,8 @@ export class HomeContainerComponent implements OnInit, AfterViewInit {
     a: '9',
     b: 'b',
   };
-  TopMenus: TopMenu[] = [];
+  // TopMenus: TopMenu[] = [];
+  TopMenus$: Observable<TopMenu[]>;
 
   @ViewChild(ImageSliderComponent) imageSlider: ImageSliderComponent; // 也可以用别名，组件的类型或者指令directive
   constructor(
@@ -41,7 +45,8 @@ export class HomeContainerComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     // console.log('ngOnInit');
-    this.TopMenus = this.service.getTabs();
+    // this.TopMenus = this.service.getTabs();
+    this.TopMenus$ = this.service.getTabs();
 
     console.log(this.baseUrl);
   }

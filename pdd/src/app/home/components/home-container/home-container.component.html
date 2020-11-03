@@ -1,5 +1,5 @@
 <app-scrollable-tap
-  [menus]="TopMenus"
+  [menus]="TopMenus$ | async"
   (tabSelected)="handleTabSelected($event)"
   [backgroundColor]="backgroundColor"
   [titleColor]="titleColor"

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import localZh from '@angular/common/locales/zh-Hans';
 import { registerLocaleData } from '@angular/common';
 
-import { HomeModule } from './home';
+import { HomeModule, NotificationInterceptor, ParamInterceptor } from './home';
 
 @NgModule({
   // 声明我这个模块有哪些组件
@@ -30,6 +30,16 @@ import { HomeModule } from './home';
     {
       provide: LOCALE_ID,
       useValue: 'zh-Hans',
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ParamInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NotificationInterceptor,
+      multi: true,
     },
   ],
   entryComponents: [],

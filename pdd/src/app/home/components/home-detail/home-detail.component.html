@@ -1,8 +1,9 @@
-<div *ngIf="selectedTabLink === 'hot'; else other">
-  <app-image-slider [sliders]="imageSliders"></app-image-slider>
+<!-- async在模板中做subscribe -->
+<div *ngIf="(selectedTabLink$ | async) === 'hot'; else other">
+  <app-image-slider [sliders]="imageSliders$ | async"></app-image-slider>
 
   <app-horizontal-grid [(username4)]="username4">
-    <span appGridItem *ngFor="let item of channels">
+    <span appGridItem *ngFor="let item of channels$ | async">
       <img
         [src]="item.icon"
         alt=""
