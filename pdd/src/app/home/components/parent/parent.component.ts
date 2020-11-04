@@ -16,7 +16,7 @@ export class ParentComponent implements OnInit {
       console.log('ev', ev.target.value);
     });
 
-    console.log('hello');
+    // console.log('hello');
   }
 
   handleClick() {}

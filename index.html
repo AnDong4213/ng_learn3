@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Rxjs</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://unpkg.com/rxjs@6.6.3/bundles/rxjs.umd.min.js"></script>
+  </head>
+
+  <body>
+    <input id="length" type="text" />
+    <input id="width" type="text" />
+    <span id="area"></span>
+
+    <script>
+      // 这些流都是主动的把数据推给你，而不是传统的编程中用命令去拉取，不断地取得值
+      console.log(rxjs);
+      const {
+        fromEvent,
+        combineLatest,
+        zip,
+        from,
+        of,
+        interval,
+        timer,
+        never,
+        empty,
+        merge,
+        concat
+      } = rxjs;
+      const {
+        pluck,
+        map,
+        mapTo,
+        take,
+        filter,
+        first,
+        last,
+        takeWhile,
+        skip,
+        scan,
+        reduce,
+        debounceTime,
+        debounce,
+        distinct,
+        distinctUntilChanged
+      } = rxjs.operators;
+
+      let length = document.getElementById("length");
+      let width = document.getElementById("width");
+      let area = document.getElementById("area");
+      /* length.addEventListener("keyup", (e) => {
+        console.log(e);
+      }); */
+
+      // map，pluck，mapTo
+      let length$ = fromEvent(length, "keyup").pipe(pluck("target", "value"));
+      // let width$ = fromEvent(width, "keyup").pipe(pluck("target", "value"));
+      // let width$ = fromEvent(width, "keyup").pipe(map((ev) => ev.target.value));
+      // let width$ = fromEvent(width, "keyup").pipe(mapTo(2));
+      let width$ = fromEvent(width, "keyup").pipe(map((_) => 2));
+
+      let area$ = combineLatest(length$, width$, (l, w) => l * w);
+      // let area$ = zip(length$, width$, (l, w) => l * w); //同时是新值
+
+      area$.subscribe((val) => (area.innerHTML = val));
+
+      /* const array = [10, 20, 30];
+      const result = from(array);
+      result.subscribe((x) => console.log(x)); */
+
+      /* const result = of({ id: 1, val: 9 }, { id: 11, val: 19 });
+      result.subscribe((x) => console.log(x)); */
+
+      let interval$ = interval(100);
+      // let interval$ = never();
+      // let interval$ = empty();
+      // interval$.subscribe((val) => console.log(val));
+      interval$
+        .pipe(
+          // map((val) => val * 2),
+          // map((val) => { throw "出错了"; }),
+          filter((val) => val % 2 === 0),
+          // takeWhile((val) => val < 9),
+          skip(2),
+          take(5),
+          // reduce((x, y) => x + y)
+          reduce((x, y) => [...x, y], [])
+          // first()
+          // last()  // 慎用
+        )
+        .subscribe(
+          (val) => console.log(val),
+          (err) => console.log("Error: " + err),
+          () => console.log("I am complete")
+        );
+
+      /* let timer$ = timer(3000, 1000);
+      timer$.subscribe((val) => console.log(val)); */
+
+      let length2$ = fromEvent(length, "keyup").pipe(
+        pluck("target", "value"),
+        // debounceTime(300)
+        // debounce(() => interval(300))
+        distinct()
+        // distinctUntilChanged()
+      );
+      // length2$.subscribe((val) => console.log(val));
+      let width2$ = fromEvent(width, "keyup").pipe(
+        pluck("target", "value"),
+        // debounceTime(300)
+        // debounce(() => interval(300))
+        distinct()
+        // distinctUntilChanged()
+      );
+      let first$ = from([1, 2, 3, 4]);
+      // let merge$ = merge(length2$, width2$);
+      let merge$ = concat(first$, width2$);
+      merge$.subscribe((val) => console.log(val));
+    </script>
+  </body>
+</html>
