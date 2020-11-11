@@ -44,7 +44,9 @@
         debounceTime,
         debounce,
         distinct,
-        distinctUntilChanged
+        distinctUntilChanged,
+        startWith,
+        withLatestFrom
       } = rxjs.operators;
 
       let length = document.getElementById("length");
@@ -114,9 +116,12 @@
         distinct()
         // distinctUntilChanged()
       );
-      let first$ = from([1, 2, 3, 4]);
+      // let first$ = from([1, 2, 3, 4]).pipe(startWith(0));
+      // let merge$ = concat(first$, width2$); //第一个必须是有穷序列，等第一个执行完，才执行第二个
+
       // let merge$ = merge(length2$, width2$);
-      let merge$ = concat(first$, width2$);
+      let merge$ = length2$.pipe(withLatestFrom(width2$)); // 以第一个流为主，第一个流有变动才会有输出，第二个不会
+
       merge$.subscribe((val) => console.log(val));
     </script>
   </body>

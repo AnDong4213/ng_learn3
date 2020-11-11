@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Rxjs</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://unpkg.com/rxjs@6.6.3/bundles/rxjs.umd.min.js"></script>
+  </head>
+
+  <body>
+    <input id="length" type="text" />
+    <input id="width" type="text" />
+    <span id="area"></span>
+
+    <script>
+      // 这些流都是主动的把数据推给你，而不是传统的编程中用命令去拉取，不断地取得值
+      console.log(rxjs);
+      const {
+        Subject,
+        ReplaySubject,
+        BehaviorSubject,
+        fromEvent,
+        combineLatest,
+        zip,
+        from,
+        of,
+        interval,
+        timer,
+        never,
+        empty,
+        merge,
+        concat
+      } = rxjs;
+      const {
+        pluck,
+        map,
+        mapTo,
+        take,
+        filter,
+        first,
+        last,
+        takeWhile,
+        skip,
+        scan,
+        reduce,
+        debounceTime,
+        debounce,
+        distinct,
+        distinctUntilChanged,
+        startWith,
+        withLatestFrom,
+        flatMap,
+        mergeMap,
+        // 重新开始流，流断掉了
+        switchMap,
+        share
+      } = rxjs.operators;
+
+      let length = document.getElementById("length");
+      let width = document.getElementById("width");
+      let area = document.getElementById("area");
+
+      /* let length$ = fromEvent(length, "keyup").pipe(pluck("target", "value"));
+      let width$ = fromEvent(width, "keyup").pipe(pluck("target", "value")); */
+
+      // 处理流里面还有流用 flatMap，mergeMap
+      let length$ = fromEvent(length, "keyup").pipe(
+        pluck("target", "value"),
+        switchMap((_) => interval(1000))
+      );
+      let width$ = fromEvent(width, "keyup").pipe(pluck("target", "value"));
+
+      length$.subscribe((val) => {
+        console.log(val);
+      }); // 行为是一样的，subject是个热的流
+
+      // Observable的冷和热
+      // let count$ = interval(1000); // 冷的，点播，各看各的
+      /* let count$ = interval(1000).pipe(share()); // 热的，看直播不管什么时候看到的都是一样的
+      count$.subscribe((val) => console.log(val));
+      setTimeout(() => {
+        count$.subscribe((val) => console.log(val));
+      }, 2000); */
+
+      /* let counter$ = interval(1000).pipe(take(5));
+      let subject = new Subject();
+
+      let observer1 = {
+        next: (val) => console.log("1: " + val),
+        error: (err) => console.error("<ERROR>1: " + err),
+        complete: () => console.log("1 is complete")
+      };
+      let observer2 = {
+        next: (val) => console.log("2: " + val),
+        error: (err) => console.error("<ERROR>2: " + err),
+        complete: () => console.log("2 is complete")
+      };
+      // counter$.subscribe((val) => console.log(val));  // 这种形式等价于下面  counter$.subscribe(observer1);
+      // counter$.subscribe(observer1);
+      // setTimeout(() => {
+      //   counter$.subscribe(observer2);
+      // }, 2000);
+
+      subject.subscribe(observer1);
+      subject.next(10);
+      subject.next(11);
+      setTimeout(() => {
+        subject.subscribe(observer2);
+      }, 2000);
+      counter$.subscribe(subject); */
+
+      /* let counter$ = interval(1000).pipe(take(4));
+      let subject = new ReplaySubject(2); // Replay就是要把过去的几个重播，里面有无参数结果不一样
+      subject.next(10);
+      subject.next(11);
+
+      let observer1 = {
+        next: (val) => console.log("1: " + val),
+        error: (err) => console.error("<ERROR>1: " + err),
+        complete: () => console.log("1 is complete")
+      };
+      let observer2 = {
+        next: (val) => console.log("2: " + val),
+        error: (err) => console.error("<ERROR>2: " + err),
+        complete: () => console.log("2 is complete")
+      };
+      subject.subscribe(observer1); // 第一个流订阅的时候，一看要重播流里面的过去的几个值，就重播出来
+
+      setTimeout(() => {
+        subject.subscribe(observer2);
+      }, 2000);
+      counter$.subscribe(subject); */
+
+      let counter$ = interval(1000).pipe(take(4));
+      let subject = new BehaviorSubject(); // 只记住最新的值
+      subject.next(10);
+      subject.next(11);
+
+      let observer1 = {
+        next: (val) => console.log("1: " + val),
+        error: (err) => console.error("<ERROR>1: " + err),
+        complete: () => console.log("1 is complete")
+      };
+      let observer2 = {
+        next: (val) => console.log("2: " + val),
+        error: (err) => console.error("<ERROR>2: " + err),
+        complete: () => console.log("2 is complete")
+      };
+      subject.subscribe(observer1);
+
+      setTimeout(() => {
+        subject.subscribe(observer2);
+      }, 2000);
+      counter$.subscribe(subject);
+    </script>
+  </body>
+</html>
