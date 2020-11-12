@@ -4,6 +4,8 @@ import {
   OnInit,
   ViewChild,
   AfterViewInit,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { fromEvent, of, Observable, interval, Subject } from 'rxjs';
 import { scan, throttleTime, map, distinct } from 'rxjs/operators';
@@ -23,7 +25,7 @@ interface event {
   templateUrl: './my.component.html',
   styleUrls: ['./my.component.scss'],
 })
-export class MyComponent implements OnInit, AfterViewInit {
+export class MyComponent implements OnInit, AfterViewInit, OnChanges {
   @ViewChild('btnTest', { static: true }) btn: ElementRef;
   @ViewChild('divModule', { static: true }) divDom: ElementRef;
   @ViewChild('btnTest2', { static: true }) btn2: ElementRef;
@@ -169,8 +171,10 @@ export class MyComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit(): void {
     this.exp$.subscribe((exp) => console.log('exp$', exp));
-    console.log(99);
+    // console.log(99);
   }
+
+  ngOnChanges(changes: SimpleChanges): void {}
 
   handleClick() {
     console.log(this.divDom.nativeElement.scrollHeight);

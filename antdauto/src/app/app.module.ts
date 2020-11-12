@@ -12,6 +12,7 @@ import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 
 import { HomeModule } from './home';
+import { ChatModule } from './chat';
 
 registerLocaleData(zh);
 
@@ -25,8 +26,10 @@ registerLocaleData(zh);
     BrowserAnimationsModule,
 
     HomeModule,
+    ChatModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent],
+  exports: [],
 })
 export class AppModule {}
