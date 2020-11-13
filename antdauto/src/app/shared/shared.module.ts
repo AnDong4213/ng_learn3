@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// import { WxCommonCompComponent } from '../chat';
+import { SharedCompComponent } from './components';
 
 @NgModule({
-  declarations: [],
+  declarations: [SharedCompComponent],
   imports: [CommonModule],
-  exports: [CommonModule],
+  exports: [CommonModule, SharedCompComponent],
 })
 export class SharedModule {}
