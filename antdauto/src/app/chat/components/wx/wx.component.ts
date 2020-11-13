@@ -9,6 +9,6 @@ export class WxComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log('chat');
+    // console.log('chat');
   }
 }
