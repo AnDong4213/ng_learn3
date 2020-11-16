@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
+import { SharedModule } from './shared';
 import { AppRoutingModule } from './app-routing.module';
 
 import localZh from '@angular/common/locales/zh-Hans';
