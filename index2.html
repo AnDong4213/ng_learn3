@@ -40,7 +40,6 @@
         filter,
         first,
         last,
-        takeWhile,
         skip,
         scan,
         reduce,
@@ -54,7 +53,8 @@
         mergeMap,
         // 重新开始流，流断掉了
         switchMap,
-        share
+        share,
+        takeWhile
       } = rxjs.operators;
 
       let length = document.getElementById("length");
@@ -153,6 +153,16 @@
         subject.subscribe(observer2);
       }, 2000);
       counter$.subscribe(subject);
+
+      //
+      console.log("--------------------------------------------------");
+      const clicksTakeWhile = fromEvent(document, "click");
+      const resultTakeWhile = clicksTakeWhile.pipe(
+        takeWhile((ev) => ev.clientX > 200)
+      );
+      const resultMap = clicksTakeWhile.pipe(map((ev) => ev.clientX));
+      resultTakeWhile.subscribe((x) => console.log(x.target));
+      resultMap.subscribe((x) => console.log(x));
     </script>
   </body>
 </html>

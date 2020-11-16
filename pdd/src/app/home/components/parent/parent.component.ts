@@ -9,6 +9,9 @@ import { fromEvent } from 'rxjs';
 export class ParentComponent implements OnInit {
   @ViewChild('inputRef', { static: true }) inputRef: ElementRef;
 
+  // startDate = new Date(2019, 6, 1);
+  futureDate = new Date(2020, 10, 17);
+
   constructor() {}
 
   ngOnInit() {

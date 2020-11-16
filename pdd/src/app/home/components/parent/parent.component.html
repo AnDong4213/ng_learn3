@@ -3,6 +3,6 @@
 
 <br />
 <input type="text" #inputRef />
-<button (click)="handleClick()">触发子视图脏值检测</button>
+<button (click)="handleClick()">触发子视图脏值检测2</button>
 
-<app-count-down></app-count-down>
+<app-count-down [futureDate]="futureDate"></app-count-down>
