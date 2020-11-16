@@ -14,6 +14,7 @@ import zh from '@angular/common/locales/zh';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home';
 import { ChatModule } from './chat';
+import { RxjsModule } from './rxjs';
 
 registerLocaleData(zh);
 
@@ -29,6 +30,7 @@ registerLocaleData(zh);
     SharedModule,
     HomeModule,
     ChatModule,
+    RxjsModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent],
