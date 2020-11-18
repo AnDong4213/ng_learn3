@@ -6,8 +6,9 @@ import {
   Inject,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
 import { TopMenu, ImageSliderComponent } from 'src/app/shared/components';
 import { HomeService, token } from '../../services';
@@ -32,11 +33,13 @@ export class HomeContainerComponent implements OnInit, AfterViewInit {
   };
   // TopMenus: TopMenu[] = [];
   TopMenus$: Observable<TopMenu[]>;
+  selectedTabLink$: Observable<string>;
 
   @ViewChild(ImageSliderComponent) imageSlider: ImageSliderComponent; // 也可以用别名，组件的类型或者指令directive
   constructor(
     private router: Router,
     private service: HomeService,
+    private route: ActivatedRoute,
 
     // `@Inject` 这个注解用于找到可注入的标识，
     // 也就是 provide 的那个标识
@@ -48,7 +51,11 @@ export class HomeContainerComponent implements OnInit, AfterViewInit {
     // this.TopMenus = this.service.getTabs();
     this.TopMenus$ = this.service.getTabs();
 
-    console.log(this.baseUrl);
+    // console.log(this.baseUrl);
+    this.selectedTabLink$ = this.route.firstChild.paramMap.pipe(
+      filter((params) => params.has('tabLink')),
+      map((params) => params.get('tabLink'))
+    );
   }
 
   ngAfterViewInit(): void {

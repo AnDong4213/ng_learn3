@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ImageSlider, Channel, TopMenu } from 'src/app/shared/components';
+import { ImageSlider, Channel, TopMenu, Ad } from 'src/app/shared';
 import { environment } from 'src/environments/environment';
 
 /**
@@ -273,5 +273,11 @@ export class HomeService {
     // return this.channels;
 
     return this.http.get<Channel[]>(`${environment.baseUrl}/channels`);
+  }
+
+  getAdByTab(tab: string) {
+    return this.http.get<Ad[]>(`${environment.baseUrl}/ads`, {
+      params: { categories_like: tab },
+    });
   }
 }

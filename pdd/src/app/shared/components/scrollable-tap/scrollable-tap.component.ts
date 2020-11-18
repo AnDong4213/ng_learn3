@@ -46,6 +46,7 @@ export class ScrollableTapComponent
     OnDestroy {
   selectedIndex = -1;
   // trackByFn = (index, menu) => menu.title;
+  @Input() selectedTabLink: string;
   @Input() menus: TopMenu[] = [];
   @Input() backgroundColor = '#fff';
   @Input() titleActiveColor = 'yellow';
@@ -98,7 +99,7 @@ export class ScrollableTapComponent
   }
 
   ngOnDestroy(): void {
-    console.log('组件销毁...');
+    // console.log('组件销毁...');
   }
 
   trackByFn(index, menu) {

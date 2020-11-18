@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   }
 
   handleTabSelect(tab: TabItem) {
-    console.log(tab);
+    // console.log(tab);
     this.router.navigate([tab.link]);
   }
 

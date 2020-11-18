@@ -13,18 +13,15 @@
       <span appGridItemTitle="0.6rem" class="title">{{ item.title }}</span>
     </span>
   </app-horizontal-grid>
-  <!-- <app-count-down></app-count-down> -->
 </div>
-
 <ng-template #other> Others Link; </ng-template>
 
-<a
+<!-- <a
   [routerLink]="['grand']"
   routerLinkActive="active"
   [queryParams]="{ name: 'zhao' }"
   >Link To Grand</a
 >
-
 <a [routerLink]="[{ outlets: { second: ['aux'] } }]">Second</a>
 <router-outlet></router-outlet>
-<router-outlet name="second"></router-outlet>
+<router-outlet name="second"></router-outlet> -->

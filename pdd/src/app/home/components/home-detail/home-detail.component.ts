@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-import { ImageSlider, Channel } from 'src/app/shared/components';
+import { ImageSlider, Channel, Ad } from 'src/app/shared';
 import { HomeService } from '../../services';
 
 @Component({
@@ -23,6 +23,7 @@ export class HomeDetailComponent implements OnInit, OnDestroy {
   selectedTabLink$: Observable<string>;
   imageSliders$: Observable<ImageSlider[]>;
   channels$: Observable<Channel[]>;
+  ad$: Observable<Ad[]>;
   sub: Subscription;
 
   constructor(
@@ -58,7 +59,7 @@ export class HomeDetailComponent implements OnInit, OnDestroy {
     );
 
     this.sub = this.route.queryParamMap.subscribe((params) => {
-      console.log('查询参数', params);
+      // console.log('查询参数', params);
     });
 
     /* this.route.url.subscribe((params) => {
