@@ -11,6 +11,10 @@ import localZh from '@angular/common/locales/zh-Hans';
 import { registerLocaleData } from '@angular/common';
 
 import { HomeModule, NotificationInterceptor, ParamInterceptor } from './home';
+import { CategoryModule } from './category';
+import { MyModule } from './my';
+import { RecommendModule } from './recommend';
+import { ChatModule } from './chat';
 
 @NgModule({
   // 声明我这个模块有哪些组件
@@ -25,6 +29,10 @@ import { HomeModule, NotificationInterceptor, ParamInterceptor } from './home';
     // 注意如果不是懒加载，一定要在根模块中导入功能模块
     // 才能使子路由导入进来，路由也才可以成功
     HomeModule,
+    CategoryModule,
+    MyModule,
+    RecommendModule,
+    ChatModule,
   ],
   providers: [
     {
