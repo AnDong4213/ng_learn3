@@ -25,8 +25,8 @@ interface Dict {
 })
 export class HomeContainerComponent implements OnInit, AfterViewInit {
   title = 'pinduoduo';
-  backgroundColor = 'pink';
-  titleColor = '#fff';
+  backgroundColor = '#fff';
+  titleColor = '#000';
   dict: Dict = {
     a: '9',
     b: 'b',

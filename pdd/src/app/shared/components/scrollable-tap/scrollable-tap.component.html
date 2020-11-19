@@ -13,7 +13,12 @@
   >
     <!-- <a href="#" [class.active]="i === selectedIndex" (click)="handleSelection(i, menu)">{{ menu.title }}</a> -->
     <a
-      [ngStyle]="{ color: i === selectedIndex ? titleActiveColor : titleColor }"
+      [ngStyle]="{
+        color:
+          i === selectedIndex || menu.link === selectedTabLink
+            ? titleActiveColor
+            : titleColor
+      }"
       (click)="handleSelection(i, menu)"
       >{{ menu.title }}</a
     >

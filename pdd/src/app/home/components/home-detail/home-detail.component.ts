@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, switchMap } from 'rxjs/operators';
 
 import { ImageSlider, Channel, Ad } from 'src/app/shared';
 import { HomeService } from '../../services';
@@ -23,7 +23,7 @@ export class HomeDetailComponent implements OnInit, OnDestroy {
   selectedTabLink$: Observable<string>;
   imageSliders$: Observable<ImageSlider[]>;
   channels$: Observable<Channel[]>;
-  ad$: Observable<Ad[]>;
+  ad$: Observable<Ad>;
   sub: Subscription;
 
   constructor(
@@ -85,6 +85,16 @@ export class HomeDetailComponent implements OnInit, OnDestroy {
     }); */
     this.imageSliders$ = this.service.getBanners();
     this.channels$ = this.service.getChannels();
+    // this.service.getAdByTab('men').subscribe((a) => console.log(a));
+
+    this.ad$ = this.selectedTabLink$.pipe(
+      switchMap((tab) => this.service.getAdByTab(tab)),
+      filter((ads) => {
+        console.log('ads', ads);
+        return ads.length > 0;
+      }),
+      map((ads) => ads[0])
+    );
   }
 
   ngOnDestroy(): void {

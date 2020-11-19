@@ -1,5 +1,28 @@
 <!-- async在模板中做subscribe -->
-<div *ngIf="(selectedTabLink$ | async) === 'hot'; else other">
+
+<ng-container *ngIf="selectedTabLink$ | async as tab">
+  <ng-container *ngIf="tab === 'hot'">
+    <app-image-slider [sliders]="imageSliders$ | async"></app-image-slider>
+
+    <app-horizontal-grid [(username4)]="username4">
+      <span appGridItem *ngFor="let item of channels$ | async">
+        <img
+          [src]="item.icon"
+          alt=""
+          appGridItemImage="2rem"
+          [fitMode]="'cover'"
+        />
+        <span appGridItemTitle="0.6rem" class="title">{{ item.title }}</span>
+      </span>
+    </app-horizontal-grid>
+  </ng-container>
+</ng-container>
+
+<div class="ad-container" *ngIf="ad$ | async as ad">
+  <img [src]="ad.imageUrl" alt="" class="ad-image" />
+</div>
+
+<!-- <div *ngIf="(selectedTabLink$ | async) === 'hot'; else other">
   <app-image-slider [sliders]="imageSliders$ | async"></app-image-slider>
 
   <app-horizontal-grid [(username4)]="username4">
@@ -14,7 +37,7 @@
     </span>
   </app-horizontal-grid>
 </div>
-<ng-template #other> Others Link; </ng-template>
+<ng-template #other> Others Link; </ng-template> -->
 
 <!-- <a
   [routerLink]="['grand']"
