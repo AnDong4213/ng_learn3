@@ -17,6 +17,8 @@ import {
   GridItemDirective,
   GridItemTitleDirective,
   GridItemImageDirective,
+  TagDirective,
+  AvatarDirective,
 } from './directives';
 
 @NgModule({
@@ -31,6 +33,8 @@ import {
     GridItemDirective,
     GridItemTitleDirective,
     GridItemImageDirective,
+    TagDirective,
+    AvatarDirective,
     AgoPipe,
   ],
   imports: [CommonModule, FormsModule],
@@ -47,6 +51,8 @@ import {
     GridItemDirective,
     GridItemTitleDirective,
     GridItemImageDirective,
+    TagDirective,
+    AvatarDirective,
     AgoPipe,
   ],
 })
