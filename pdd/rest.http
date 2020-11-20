@@ -34,3 +34,6 @@ GET {{host}}/channels?icode={{iCode}} HTTP/1.1
 
 ###
 GET {{host}}/ads?categories_like=men&icode={{iCode}} HTTP/1.1
+
+###
+GET {{host}}/products?categories_like=hot&icode={{iCode}} HTTP/1.1

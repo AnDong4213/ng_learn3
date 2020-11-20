@@ -8,6 +8,8 @@ import {
   ScrollableTapComponent,
   CountDownComponent,
   FooterComponent,
+  VerticalGridComponent,
+  ProductCardComponent,
 } from './components';
 import { AgoPipe } from './pipes';
 
@@ -24,6 +26,8 @@ import {
     HorizontalGridComponent,
     CountDownComponent,
     FooterComponent,
+    VerticalGridComponent,
+    ProductCardComponent,
     GridItemDirective,
     GridItemTitleDirective,
     GridItemImageDirective,
@@ -38,6 +42,8 @@ import {
     HorizontalGridComponent,
     CountDownComponent,
     FooterComponent,
+    VerticalGridComponent,
+    ProductCardComponent,
     GridItemDirective,
     GridItemTitleDirective,
     GridItemImageDirective,

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ImageSlider, Channel, TopMenu, Ad } from 'src/app/shared';
+import { ImageSlider, Channel, TopMenu, Ad, Product } from 'src/app/shared';
 import { environment } from 'src/environments/environment';
 
 /**
@@ -277,6 +277,12 @@ export class HomeService {
 
   getAdByTab(tab: string) {
     return this.http.get<Ad[]>(`${environment.baseUrl}/ads`, {
+      params: { categories_like: tab },
+    });
+  }
+
+  getProductsByTab(tab: string) {
+    return this.http.get<Product[]>(`${environment.baseUrl}/products`, {
       params: { categories_like: tab },
     });
   }
