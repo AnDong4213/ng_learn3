@@ -1,5 +1,4 @@
 <!-- async在模板中做subscribe -->
-
 <ng-container *ngIf="selectedTabLink$ | async as tab">
   <ng-container *ngIf="tab === 'hot'">
     <app-image-slider [sliders]="imageSliders$ | async"></app-image-slider>

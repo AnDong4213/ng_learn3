@@ -15,6 +15,7 @@ import { CategoryModule } from './category';
 import { MyModule } from './my';
 import { RecommendModule } from './recommend';
 import { ChatModule } from './chat';
+import { ProductModule } from './product';
 
 @NgModule({
   // 声明我这个模块有哪些组件
@@ -33,6 +34,7 @@ import { ChatModule } from './chat';
     MyModule,
     RecommendModule,
     ChatModule,
+    ProductModule,
   ],
   providers: [
     {
