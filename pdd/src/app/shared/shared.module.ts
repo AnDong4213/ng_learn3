@@ -11,6 +11,7 @@ import {
   VerticalGridComponent,
   ProductCardComponent,
   ProductTileComponent,
+  BackButtonComponent,
 } from './components';
 import { AgoPipe } from './pipes';
 
@@ -32,6 +33,7 @@ import {
     VerticalGridComponent,
     ProductCardComponent,
     ProductTileComponent,
+    BackButtonComponent,
     GridItemDirective,
     GridItemTitleDirective,
     GridItemImageDirective,
@@ -51,6 +53,7 @@ import {
     VerticalGridComponent,
     ProductCardComponent,
     ProductTileComponent,
+    BackButtonComponent,
     GridItemDirective,
     GridItemTitleDirective,
     GridItemImageDirective,

@@ -16,6 +16,9 @@ import { HomeModule } from './home';
 import { ChatModule } from './chat';
 import { RxjsModule } from './rxjs';
 
+import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+
 registerLocaleData(zh);
 
 @NgModule({
@@ -26,6 +29,9 @@ registerLocaleData(zh);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+
+    NzTimePickerModule,
+    NzButtonModule,
 
     SharedModule,
     HomeModule,
