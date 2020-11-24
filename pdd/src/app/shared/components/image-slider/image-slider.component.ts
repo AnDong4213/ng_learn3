@@ -48,6 +48,9 @@ export class ImageSliderComponent implements OnInit, AfterViewInit, OnDestroy {
       // dom.nativeElement.style.height = '100px';
       this.rd2.setStyle(dom.nativeElement, 'height', '100px');
     }); */
+    if (this.intervalBySeconds <= 0) {
+      return;
+    }
     this.intervalId = setInterval(() => {
       this.rd2.setProperty(
         this.imgSlider.nativeElement,
