@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
@@ -9,6 +9,7 @@ import { OrderService } from '../../services';
   selector: 'app-product-container',
   templateUrl: './product-container.component.html',
   styleUrls: ['./product-container.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductContainerComponent implements OnInit {
   variants$: Observable<ProductVariant[]>;
@@ -29,4 +30,8 @@ export class ProductContainerComponent implements OnInit {
     );
     // this.variants$.subscribe((a) => console.log(a));
   }
+
+  handleDirectBuy(variants: ProductVariant[]) {}
+
+  handleGroupBuy(variants: ProductVariant[]) {}
 }
