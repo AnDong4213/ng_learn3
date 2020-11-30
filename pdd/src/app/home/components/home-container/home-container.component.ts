@@ -51,7 +51,7 @@ export class HomeContainerComponent implements OnInit, AfterViewInit {
     // this.TopMenus = this.service.getTabs();
     this.TopMenus$ = this.service.getTabs();
 
-    // console.log(this.baseUrl);
+    console.log(this.baseUrl);
     this.selectedTabLink$ = this.route.firstChild.paramMap.pipe(
       filter((params) => params.has('tabLink')),
       map((params) => params.get('tabLink'))

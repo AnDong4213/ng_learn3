@@ -76,14 +76,14 @@
       }); // 行为是一样的，subject是个热的流
 
       // Observable的冷和热
-      // let count$ = interval(1000); // 冷的，点播，各看各的
-      /* let count$ = interval(1000).pipe(share()); // 热的，看直播不管什么时候看到的都是一样的
+      // let count$ = interval(1000).pipe(take(5)); // 冷的，点播，各看各的
+      /* let count$ = interval(1000).pipe(take(5), share()); // 热的，看直播不管什么时候看到的都是一样的
       count$.subscribe((val) => console.log(val));
       setTimeout(() => {
         count$.subscribe((val) => console.log(val));
       }, 2000); */
 
-      /* let counter$ = interval(1000).pipe(take(5));
+      let counter$ = interval(1000).pipe(take(5));
       let subject = new Subject();
 
       let observer1 = {
@@ -108,7 +108,7 @@
       setTimeout(() => {
         subject.subscribe(observer2);
       }, 2000);
-      counter$.subscribe(subject); */
+      counter$.subscribe(subject);
 
       /* let counter$ = interval(1000).pipe(take(4));
       let subject = new ReplaySubject(2); // Replay就是要把过去的几个重播，里面有无参数结果不一样
@@ -132,10 +132,11 @@
       }, 2000);
       counter$.subscribe(subject); */
 
-      let counter$ = interval(1000).pipe(take(4));
+      /* let counter$ = interval(1000).pipe(take(4));
       let subject = new BehaviorSubject(); // 只记住最新的值
       subject.next(10);
       subject.next(11);
+      subject.next(12);
 
       let observer1 = {
         next: (val) => console.log("1: " + val),
@@ -152,17 +153,18 @@
       setTimeout(() => {
         subject.subscribe(observer2);
       }, 2000);
-      counter$.subscribe(subject);
+      counter$.subscribe(subject); */
+      // counter$.subscribe((v) => console.log(v));
 
       //
       console.log("--------------------------------------------------");
-      const clicksTakeWhile = fromEvent(document, "click");
+      /* const clicksTakeWhile = fromEvent(document, "click");
       const resultTakeWhile = clicksTakeWhile.pipe(
         takeWhile((ev) => ev.clientX > 200)
       );
       const resultMap = clicksTakeWhile.pipe(map((ev) => ev.clientX));
       resultTakeWhile.subscribe((x) => console.log(x.target));
-      resultMap.subscribe((x) => console.log(x));
+      resultMap.subscribe((x) => console.log(x)); */
     </script>
   </body>
 </html>

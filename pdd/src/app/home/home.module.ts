@@ -24,7 +24,7 @@ import { HomeService, token } from './services';
   providers: [
     // 传统写法，如果采用这种写法，就不能在 service 中写 `providedIn`
     // HomeService,
-    { provide: token, useValue: 'http://localhost9911--00' },
+    { provide: token, useValue: 'http://localhost9911--007' },
   ],
   imports: [SharedModule, HomeRoutingModule],
 })

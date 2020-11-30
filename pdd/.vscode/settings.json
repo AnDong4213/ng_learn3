@@ -1,5 +1,5 @@
 {
-  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": null,
-  "beautify.ignore": ""
+  "beautify.ignore": "",
+  "editor.formatOnSave": true
 }
