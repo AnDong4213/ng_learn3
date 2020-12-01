@@ -5,5 +5,6 @@ import { DialogComponent } from './components';
 @NgModule({
   imports: [CommonModule],
   declarations: [DialogComponent],
+  exports: [DialogComponent],
 })
 export class DialogModule {}

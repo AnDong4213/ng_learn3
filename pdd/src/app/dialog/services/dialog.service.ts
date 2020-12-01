@@ -7,8 +7,8 @@ import { DomService, ChildConfig } from './dom.service';
   providedIn: 'root',
 })
 export class DialogService {
-  private dialogElementId = 'dialog-container';
-  private overlayElementId = 'overlay';
+  private readonly dialogElementId = 'dialog-container';
+  private readonly overlayElementId = 'overlay';
   private data$ = new BehaviorSubject<object | null>(null);
 
   constructor(

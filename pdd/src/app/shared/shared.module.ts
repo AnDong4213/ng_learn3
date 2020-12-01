@@ -14,6 +14,7 @@ import {
   BackButtonComponent,
 } from './components';
 import { AgoPipe } from './pipes';
+import { DialogModule } from '../dialog';
 
 import {
   GridItemDirective,
@@ -45,6 +46,7 @@ import {
   exports: [
     CommonModule,
     FormsModule,
+    DialogModule,
     ScrollableTapComponent,
     ImageSliderComponent,
     HorizontalGridComponent,
