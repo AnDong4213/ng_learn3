@@ -42,9 +42,11 @@ export class DomService {
     child: Type<any>,
     childConfig: ChildConfig
   ) {
+    // console.log('child', child);  // class ProductVariantDialogComponent {}
     const childComponentRef = this.resolver
       .resolveComponentFactory(child) // 创建一个组件
       .create(this.injector); // 让ComponentFactoryResolver创建的组件能够接收到依赖注入的东西，比如注入http
+    // console.log('childComponentRef', childComponentRef.hostView);
     this.attachConfig(childConfig, childComponentRef); // 把@Input,@Output替换掉
     this.childComponentRef = childComponentRef;
     this.appRef.attachView(childComponentRef.hostView); //angular其实是个组件树，视图数，把创建好的组件加到angualr应用中去

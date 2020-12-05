@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-dialog',
   template: `
-    <div class="container">
+    <div class="container test">
       <ng-content></ng-content>
     </div>
   `,

@@ -12,6 +12,7 @@ import { DialogService } from './dialog';
 })
 export class AppComponent implements OnInit {
   selectedIndex$: Observable<number>;
+  data$: Observable<any>;
 
   constructor(private router: Router, private dialogService: DialogService) {}
 
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit {
       }),
       map((tab) => this.getSelectedIndex(tab))
     );
+    this.data$ = this.dialogService.getData();
   }
 
   handleTabSelect(tab: TabItem) {
