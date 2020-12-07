@@ -57,6 +57,8 @@ export class DomService {
   }
 
   public attachConfig(config: ChildConfig, componentRef: ComponentRef<any>) {
+    // console.log('config', config);
+    // console.log('componentRef', componentRef);
     const inputs = config.inputs;
     const outputs = config.outputs;
     for (const key in inputs) {

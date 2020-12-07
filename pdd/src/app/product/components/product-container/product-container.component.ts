@@ -51,7 +51,7 @@ export class ProductContainerComponent implements OnInit, OnDestroy {
   handleGroupBuy(variants: ProductVariant[]) {
     const top = 40;
     // console.log('variants', variants);
-    // Subject既是一个Observable，也是一个Observer,即使数据的发送者，也是数据的订阅者
+    // Subject既是一个Observable，也是一个Observer,既是数据的发送者，也是数据的订阅者
     // Subject作为一个Observer可以发射值next(xxx),也可以作为一个Observable可以进行subscribe
     // BehaviorSubject是Subject的一种特殊形式，可以记住最新的值，Subject不可以
     // 在angular中rxjs是深入集成进去了，很多对象的返回值就是一个observable
@@ -61,7 +61,7 @@ export class ProductContainerComponent implements OnInit, OnDestroy {
     const formSubmitted = new EventEmitter();
     this.subs.push(
       formSubmitted.subscribe((ev) => {
-        console.log('ev', ev);
+        // console.log('ev', ev);
         this.dialogService.saveData(ev);
         this.router.navigate(['/orders', 'confirm']);
       })

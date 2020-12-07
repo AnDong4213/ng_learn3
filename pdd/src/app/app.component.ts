@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
       }),
       map((tab) => this.getSelectedIndex(tab))
     );
+
     this.data$ = this.dialogService.getData();
   }
 

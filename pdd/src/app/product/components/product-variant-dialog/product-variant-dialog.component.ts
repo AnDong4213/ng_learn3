@@ -18,9 +18,10 @@ import { DialogService } from 'src/app/dialog/services';
 })
 export class ProductVariantDialogComponent implements OnInit {
   @Input() variants: ProductVariant[] = [];
+  @Input() selectedVariantIndex = -1;
+
   @Output() formSubmitted = new EventEmitter();
   @Output() selected = new EventEmitter<number>();
-  @Input() selectedVariantIndex = -1;
   count = 1;
 
   constructor(private dialogService: DialogService) {}
