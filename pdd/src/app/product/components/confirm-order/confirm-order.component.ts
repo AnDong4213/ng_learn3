@@ -6,6 +6,11 @@ import { Payment } from './../payment';
 import { DialogService } from 'src/app/dialog';
 import { ProductVariant } from '../../domain';
 
+export interface itemPro {
+  variant: ProductVariant;
+  count: number;
+}
+
 @Component({
   selector: 'app-confirm-order',
   templateUrl: './confirm-order.component.html',
@@ -17,6 +22,8 @@ export class ConfirmOrderComponent implements OnInit {
   count$ = new Subject<number>();
   totalPrice$: Observable<number>;
   payments: Payment[];
+  item: itemPro;
+  btn: false;
 
   constructor(private dialogService: DialogService) {}
 
@@ -43,19 +50,19 @@ export class ConfirmOrderComponent implements OnInit {
       tap((val) => console.log(val)),
       shareReplay(1)
     );
+    this.item$.subscribe((val) => {
+      this.item = val as itemPro;
+    });
 
     const unitPrice$ = this.item$.pipe(
-      map(
-        (item: { variant: ProductVariant; count: number }) => item.variant.price
-      )
+      map((item: itemPro) => item.variant.price)
     );
 
-    const amount$ = this.item$.pipe(
-      map((item: { variant: ProductVariant; count: number }) => item.count)
-    );
+    const amount$ = this.item$.pipe(map((item: itemPro) => item.count));
 
     const mergedCount$ = merge(amount$, this.count$);
 
+    // combineLatest操作符，数组里面都有值的时候才执行，合并成一个新的流
     this.totalPrice$ = combineLatest([unitPrice$, mergedCount$]).pipe(
       map(([price, amount]) => price * amount)
     );
@@ -64,5 +71,6 @@ export class ConfirmOrderComponent implements OnInit {
   handleAmountChange(count: number) {
     this.count$.next(count);
   }
+
   handlePay() {}
 }
