@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductContainerComponent, ConfirmOrderComponent } from './components';
 
-const routes: Routes = [
+/* const routes: Routes = [
   {
     path: 'products',
     children: [
@@ -15,6 +15,22 @@ const routes: Routes = [
   {
     path: 'orders/confirm',
     component: ConfirmOrderComponent,
+  },
+]; */
+
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+      {
+        path: 'orders/confirm',
+        component: ConfirmOrderComponent,
+      },
+      {
+        path: ':productId',
+        component: ProductContainerComponent,
+      },
+    ],
   },
 ];
 

@@ -30,11 +30,11 @@ import { ProductModule } from './product';
     // 注意如果不是懒加载，一定要在根模块中导入功能模块
     // 才能使子路由导入进来，路由也才可以成功
     HomeModule,
-    CategoryModule,
-    MyModule,
-    RecommendModule,
-    ChatModule,
-    ProductModule,
+    // CategoryModule,
+    // MyModule,
+    // RecommendModule,
+    // ChatModule,
+    // ProductModule,
   ],
   providers: [
     {
