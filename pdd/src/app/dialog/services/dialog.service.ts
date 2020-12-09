@@ -9,12 +9,16 @@ import { DomService, ChildConfig } from './dom.service';
 export class DialogService {
   private readonly dialogElementId = 'dialog-container';
   private readonly overlayElementId = 'overlay';
-  private data$ = new BehaviorSubject<object | null>(null);
+  // private data$ = new BehaviorSubject<object | null>(null);
+  private data$: BehaviorSubject<object | null>;
 
   constructor(
     private domService: DomService,
     @Inject(DOCUMENT) private document: Document
-  ) {}
+  ) {
+    const initialData = localStorage.getItem('data');
+    this.data$ = new BehaviorSubject<Object | null>(JSON.parse(initialData));
+  }
 
   open(component: Type<any>, config: ChildConfig) {
     this.domService.appendComponentTo(this.dialogElementId, component, config);
@@ -36,6 +40,8 @@ export class DialogService {
 
   saveData(data: object | null) {
     this.data$.next(data);
+
+    localStorage.setItem('data', JSON.stringify(data));
   }
 
   getData() {
