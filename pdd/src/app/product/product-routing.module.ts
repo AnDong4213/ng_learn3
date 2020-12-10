@@ -23,7 +23,7 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'orders/confirm',
+        path: 'confirm',
         component: ConfirmOrderComponent,
       },
       {
