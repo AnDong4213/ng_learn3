@@ -122,6 +122,13 @@
   resolved "https://registry.npm.taobao.org/@angular/animations/download/@angular/animations-9.1.12.tgz#1c9c1a792be4b52b196cab1e5c88bd319b60716d"
   integrity sha1-HJwaeSvktSsZbKseXIi9MZtgcW0=
 
+"@angular/cdk@9.1.1":
+  version "9.1.1"
+  resolved "https://registry.npm.taobao.org/@angular/cdk/download/@angular/cdk-9.1.1.tgz#343901c5d6c0d6c502ccbd075cb9e17ea3bc05f5"
+  integrity sha1-NDkBxdbA1sUCzL0HXLnhfqO8BfU=
+  optionalDependencies:
+    parse5 "^5.0.0"
+
 "@angular/cli@~9.1.1":
   version "9.1.12"
   resolved "https://registry.npm.taobao.org/@angular/cli/download/@angular/cli-9.1.12.tgz#c6e41c80c387200766fc52a6b42fde869dcc0cef"
@@ -190,6 +197,11 @@
   version "9.1.12"
   resolved "https://registry.npm.taobao.org/@angular/language-service/download/@angular/language-service-9.1.12.tgz#c61392c0615654810cf99ee7ff46335bd0f2660b"
   integrity sha1-xhOSwGFWVIEM+Z7n/0YzW9DyZgs=
+
+"@angular/material@9.1.1":
+  version "9.1.1"
+  resolved "https://registry.npm.taobao.org/@angular/material/download/@angular/material-9.1.1.tgz#aabd148afac694dcb718ed190c0ac44042c92b56"
+  integrity sha1-qr0UivrGlNy3GO0ZDArEQELJK1Y=
 
 "@angular/platform-browser-dynamic@~9.1.1":
   version "9.1.12"
@@ -6242,6 +6254,11 @@ parse5@4.0.0:
   version "4.0.0"
   resolved "https://registry.npm.taobao.org/parse5/download/parse5-4.0.0.tgz?cache=0&sync_timestamp=1595850861876&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fparse5%2Fdownload%2Fparse5-4.0.0.tgz#6d78656e3da8d78b4ec0b906f7c08ef1dfe3f608"
   integrity sha1-bXhlbj2o14tOwLkG98CO8d/j9gg=
+
+parse5@^5.0.0:
+  version "5.1.1"
+  resolved "https://registry.npm.taobao.org/parse5/download/parse5-5.1.1.tgz?cache=0&sync_timestamp=1595850861876&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fparse5%2Fdownload%2Fparse5-5.1.1.tgz#f68e4e5ba1852ac2cadc00f4555fff6c2abb6178"
+  integrity sha1-9o5OW6GFKsLK3AD0VV//bCq7YXg=
 
 parseqs@0.0.5:
   version "0.0.5"
