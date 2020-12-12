@@ -1,12 +1,10 @@
 import { NgModule, SkipSelf, Optional } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { SharedModule } from '../shared';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -16,13 +14,7 @@ import { loadSvgResources } from '../utils/svg.util';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, SidebarComponent], // 只是声明了，而没有导出，没有导出的话只能在本module中使用，在其他module不能使用，在app.component.html中不能使用，需要在exports中做导出
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-  ],
+  imports: [HttpClientModule, BrowserAnimationsModule, SharedModule],
   exports: [HeaderComponent, FooterComponent, SidebarComponent],
 })
 export class CoreModule {
