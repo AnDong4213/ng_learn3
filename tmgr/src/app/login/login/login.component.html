@@ -1,19 +1,43 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>登录：</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-form-field color="warn" floatLabel="auto" hintLabel="必填项">
-      <span matPrefix>wang</span>
-      <input matInput type="text" placeholder="您的Email" />
-      <span matSuffix>@gmail.com</span>
-      <mat-hint align="end">右边</mat-hint>
-    </mat-form-field>
-  </mat-card-content>
-  <mat-card-actions>
-    <!-- <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button> -->
-    <p>还没有账户? <a href="">注册</a></p>
-    <p>忘记密码? <a href="">找回</a></p>
-  </mat-card-actions>
-</mat-card>
+<form>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>登录：</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field
+        color="primary"
+        floatLabel="auto"
+        hintLabel="必填项"
+        class="full-width"
+      >
+        <!-- <span matPrefix>wang</span> -->
+        <input matInput type="text" placeholder="您的Email" />
+        <!-- <span matSuffix>@gmail.com</span>
+        <mat-hint align="end">右边</mat-hint> -->
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput type="password" placeholder="您的密码" />
+      </mat-form-field>
+      <!-- <button mat-button type="button">登录</button> -->
+      <button mat-raised-button type="button">登录</button>
+      <!-- <button mat-fab type="button">登录</button> -->
+      <!-- <button mat-mini-fab type="button">登录</button> -->
+    </mat-card-content>
+    <mat-card-actions class="text-right">
+      <p>还没有账户? <a href="">注册</a></p>
+      <p>忘记密码? <a href="">找回</a></p>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>每日佳句</mat-card-title>
+      <mat-card-subtitle>人生天地之间，若白驹过隙，忽然而已</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="assets/img/quote.jpg" alt="" />
+    <mat-card-content>
+      Between the world of life, if the white horse crosses the gap, suddenly it
+      is already
+    </mat-card-content>
+  </mat-card>
+</form>
