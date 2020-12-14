@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-// import { CommonModule } from '@angular/common';
 
 import { LoginComponent } from './login';
+import { RegisterComponent } from './register';
 
-const routes: Routes = [{ path: 'login', component: LoginComponent }];
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
