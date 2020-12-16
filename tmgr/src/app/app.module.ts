@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LoginModule } from './login/login.module';
+import { ProjectModule } from './project/project.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { LoginModule } from './login/login.module';
     // BrowserAnimationsModule,
     MatSidenavModule,
     LoginModule,
+    ProjectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,4 +1,9 @@
-<app-project-item *ngFor="let project of projects" [item]="project">
+<app-project-item
+  *ngFor="let project of projects"
+  [item]="project"
+  (launchInviteDailog)="openInviteDialog(project)"
+  class="card"
+>
 </app-project-item>
 
 <button

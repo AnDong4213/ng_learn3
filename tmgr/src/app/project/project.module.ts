@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from './../shared';
+import { ProjectRoutingModule } from './project-routing.module';
 
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectItemComponent } from './project-item/project-item.component';
@@ -14,6 +15,6 @@ import { InviteComponent } from './invite/invite.component';
     InviteComponent,
   ],
   entryComponents: [NewProjectComponent, InviteComponent],
-  imports: [CommonModule],
+  imports: [SharedModule, ProjectRoutingModule],
 })
 export class ProjectModule {}
