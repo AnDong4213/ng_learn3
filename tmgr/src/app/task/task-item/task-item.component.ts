@@ -3,6 +3,8 @@ import {
   Component,
   Input,
   OnInit,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 
 @Component({
@@ -14,6 +16,8 @@ import {
 export class TaskItemComponent implements OnInit {
   @Input() item;
   avatar: string;
+  @Output() taskComplete = new EventEmitter();
+  @Output() taskClick = new EventEmitter();
 
   constructor() {}
 
@@ -23,7 +27,10 @@ export class TaskItemComponent implements OnInit {
       : 'unassigned';
   }
 
-  itemClicked(e) {}
+  itemClicked(ev: Event) {
+    ev.preventDefault();
+    this.taskClick.emit();
+  }
 
   onCheckboxClick(e) {}
 

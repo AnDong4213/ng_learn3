@@ -9,10 +9,11 @@
     ></app-task-header>
     <app-task-item
       *ngFor="let task of list.tasks"
+      (taskClick)="handleUpdateTask(task)"
+      (taskComplete)="handleCompleteTask(task)"
       [item]="task"
     ></app-task-item>
   </app-task-list>
-  <h3>看看</h3>
 </div>
 
 <button

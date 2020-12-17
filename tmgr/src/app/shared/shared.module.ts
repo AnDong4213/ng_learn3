@@ -16,6 +16,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
 
 import { MatNativeDateModule } from '@angular/material/core';
 // import { MomentDateAdapter } from '@angular/material-moment-adapter';
@@ -37,6 +38,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCheckboxModule,
     MatTooltipModule,
     MatRadioModule,
+    MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
   ],
@@ -56,6 +58,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCheckboxModule,
     MatTooltipModule,
     MatRadioModule,
+    MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
   ],

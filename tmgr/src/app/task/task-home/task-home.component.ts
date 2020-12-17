@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { NewTaskComponent } from './../new-task/new-task.component';
+import { CopyTaskComponent } from '../copy-task/copy-task.component';
 
 @Component({
   selector: 'app-task-home',
@@ -81,7 +82,7 @@ export class TaskHomeComponent implements OnInit {
   openNewProjectDialog() {}
 
   handleAddTask(id) {
-    console.log('id', id);
+    // console.log('id', id);
     this.dialog.open(NewTaskComponent);
   }
 
@@ -89,5 +90,17 @@ export class TaskHomeComponent implements OnInit {
 
   handleDelList(list) {}
 
-  handleMoveList(id) {}
+  handleMoveList(listId: string) {
+    const dialogRef = this.dialog.open(CopyTaskComponent, {
+      data: { srcListId: listId, lists: this.lists },
+    });
+  }
+
+  handleUpdateTask(task) {
+    const dialogRef = this.dialog.open(NewTaskComponent, {
+      data: { title: '修改任务', task },
+    });
+  }
+
+  handleCompleteTask(task) {}
 }
