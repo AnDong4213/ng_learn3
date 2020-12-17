@@ -1,0 +1,26 @@
+/* :host {
+  display: flex;
+  flex-direction: column;
+  flex: 1
+} */
+.task-lists {
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.fab-button {
+  position: fixed;
+  right: 32px;
+  bottom: 96px;
+  z-index: 998;
+}
+
+.list-container {
+  flex: 0 0 360px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
