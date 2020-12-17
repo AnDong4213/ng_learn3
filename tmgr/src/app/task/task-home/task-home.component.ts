@@ -1,4 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+
+import { NewTaskComponent } from './../new-task/new-task.component';
 
 @Component({
   selector: 'app-task-home',
@@ -71,9 +74,20 @@ export class TaskHomeComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
   openNewProjectDialog() {}
+
+  handleAddTask(id) {
+    console.log('id', id);
+    this.dialog.open(NewTaskComponent);
+  }
+
+  handleRenameList(list) {}
+
+  handleDelList(list) {}
+
+  handleMoveList(id) {}
 }

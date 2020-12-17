@@ -1,11 +1,18 @@
 <div class="task-lists">
   <app-task-list *ngFor="let list of lists" class="list-container">
-    <app-task-header [header]="list.name"></app-task-header>
+    <app-task-header
+      [header]="list.name"
+      (newTask)="handleAddTask(list.id)"
+      (changeListName)="handleRenameList(list)"
+      (deleteList)="handleDelList(list)"
+      (moveAllTasks)="handleMoveList(list.id)"
+    ></app-task-header>
     <app-task-item
       *ngFor="let task of list.tasks"
       [item]="task"
     ></app-task-item>
   </app-task-list>
+  <h3>看看</h3>
 </div>
 
 <button

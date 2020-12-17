@@ -3,6 +3,8 @@ import {
   Component,
   OnInit,
   Input,
+  EventEmitter,
+  Output,
 } from '@angular/core';
 
 @Component({
@@ -13,12 +15,15 @@ import {
 })
 export class TaskHeaderComponent implements OnInit {
   @Input() header: string;
+  @Output() newTask = new EventEmitter<void>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  addNewTask(e) {}
+  addNewTask(e) {
+    this.newTask.emit();
+  }
 
   onChangeListName(e) {}
 
