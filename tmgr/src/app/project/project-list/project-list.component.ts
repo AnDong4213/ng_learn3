@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { NewProjectComponent } from '../new-project/new-project.component';
 import { InviteComponent } from './../invite/invite.component';
 
@@ -30,15 +31,15 @@ export class ProjectListComponent implements OnInit {
   ngOnInit(): void {}
 
   openNewProjectDialog() {
-    const dialogRef = this.dialog
-      .open(NewProjectComponent, {
-        data: 'this is my data sent',
-      })
-      .addPanelClass('myapp-dark-theme');
+    const dialogRef = this.dialog.open(NewProjectComponent, {
+      data: 'this is my data sent',
+      // panelClass: 'myapp-dark-theme',
+    });
+    // .addPanelClass('myapp-dark-theme');
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
-      dialogRef.removePanelClass('myapp-dark-theme');
+      // dialogRef.removePanelClass('myapp-dark-theme');
     });
   }
 

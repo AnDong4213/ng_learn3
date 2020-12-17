@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 
 @Component({
   selector: 'app-task-item',
@@ -7,7 +12,20 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskItemComponent implements OnInit {
+  @Input() item;
+  avatar: string;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.avatar = this.item.owner
+      ? <string>this.item.owner.avatar
+      : 'unassigned';
+  }
+
+  itemClicked(e) {}
+
+  onCheckboxClick(e) {}
+
+  checkboxChanged() {}
 }
