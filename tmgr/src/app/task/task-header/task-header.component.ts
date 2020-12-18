@@ -28,12 +28,17 @@ export class TaskHeaderComponent implements OnInit {
     this.newTask.emit();
   }
 
-  onChangeListName(e) {}
+  onChangeListName(ev: Event) {
+    ev.preventDefault();
+    this.changeListName.emit();
+  }
 
   onMoveAllTasks(ev: Event) {
     ev.preventDefault();
     this.moveAllTasks.emit();
   }
 
-  onDeleteList(e) {}
+  onDeleteList() {
+    this.deleteList.emit();
+  }
 }

@@ -25,7 +25,8 @@ export class NewProjectComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.data);
+    // console.log(this.data);
+    this.dialogTitle = this.data.title;
   }
 
   onSubmit(a, b) {}

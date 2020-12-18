@@ -37,9 +37,12 @@ export class NewTaskComponent implements OnInit, OnDestroy {
     },
   ];
 
-  constructor() {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dialogTitle = this.data.title;
+    console.log(this.data);
+  }
 
   onSubmit(a, b) {}
 

@@ -32,7 +32,9 @@ export class TaskItemComponent implements OnInit {
     this.taskClick.emit();
   }
 
-  onCheckboxClick(e) {}
+  onCheckboxClick(ev: Event) {
+    ev.stopPropagation();
+  }
 
   checkboxChanged() {}
 }

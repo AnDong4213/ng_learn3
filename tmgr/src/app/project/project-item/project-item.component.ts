@@ -24,13 +24,26 @@ export class ProjectItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onClick(e) {}
+  onClick(ev: Event) {
+    ev.preventDefault();
+    this.itemSelected.emit();
+  }
 
-  openUpdateDialog(e) {}
+  openUpdateDialog(ev: Event) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    this.launchUpdateDialog.emit();
+  }
 
   openInviteDialog(ev: Event) {
+    ev.preventDefault();
+    ev.stopPropagation();
     this.launchInviteDailog.emit();
   }
 
-  openDeleteDialog(e) {}
+  openDeleteDialog(ev: Event) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    this.launchDeleteDailog.emit();
+  }
 }

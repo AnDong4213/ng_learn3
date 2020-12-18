@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { NewTaskComponent } from './../new-task/new-task.component';
 import { CopyTaskComponent } from '../copy-task/copy-task.component';
+import { NewTaskListComponent } from './../new-task-list/new-task-list.component';
+import { ConfirmDialogComponent } from './../../shared';
 
 @Component({
   selector: 'app-task-home',
@@ -79,16 +81,25 @@ export class TaskHomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  openNewProjectDialog() {}
-
   handleAddTask(id) {
     // console.log('id', id);
-    this.dialog.open(NewTaskComponent);
+    this.dialog.open(NewTaskComponent, {
+      data: { title: '新建任务' },
+    });
   }
 
-  handleRenameList(list) {}
-
-  handleDelList(list) {}
+  handleDelList(list) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        dialog: {
+          title: '删除任务列表',
+          content: '确定删除该任务列表吗？',
+          confirmAction: '确定',
+        },
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => console.log(result));
+  }
 
   handleMoveList(listId: string) {
     const dialogRef = this.dialog.open(CopyTaskComponent, {
@@ -100,6 +111,19 @@ export class TaskHomeComponent implements OnInit {
     const dialogRef = this.dialog.open(NewTaskComponent, {
       data: { title: '修改任务', task },
     });
+  }
+
+  handleRenameList(list) {
+    const dialogRef = this.dialog.open(NewTaskListComponent, {
+      data: {
+        name: list.name,
+      },
+    });
+  }
+
+  handleNewTaskList(ev: Event) {
+    ev.preventDefault();
+    const dialogRef = this.dialog.open(NewTaskListComponent, { data: {} });
   }
 
   handleCompleteTask(task) {}
