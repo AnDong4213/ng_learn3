@@ -1,4 +1,10 @@
-:host {
+/* :host {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+} */
+
+.container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -9,6 +15,7 @@
   height: 360px;
   flex: 0 0 360px;
 }
+
 .fab-button {
   position: fixed;
   right: 32px;

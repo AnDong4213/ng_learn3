@@ -1,12 +1,20 @@
 <mat-nav-list role="list">
   <h3 mat-subheader>项目</h3>
-  <mat-list-item role="listitem">
+  <mat-list-item
+    role="listitem"
+    [routerLink]="['/project']"
+    (click)="onNavClick()"
+  >
     <mat-icon mat-list-icon svgIcon="projects"></mat-icon>
-    <span mat-line>项目首页</span>
-    <span mat-line mat-subheader>查看您的所有首页</span>
+    <a mat-line>项目首页</a>
+    <span mat-line mat-subheader>查看您的所有项目</span>
   </mat-list-item>
   <h3 mat-subheader>日历</h3>
-  <mat-list-item role="listitem">
+  <mat-list-item
+    role="listitem"
+    [routerLink]="['/tasklists']"
+    (click)="onNavClick()"
+  >
     <mat-icon mat-list-icon svgIcon="month"></mat-icon>
     <span mat-line>月视图</span>
     <span mat-line mat-subheader>按月查看您的任务</span>

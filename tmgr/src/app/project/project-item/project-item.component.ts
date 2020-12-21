@@ -5,12 +5,16 @@ import {
   ChangeDetectionStrategy,
   Output,
   EventEmitter,
+  HostBinding,
+  HostListener,
 } from '@angular/core';
+import { cardAnim } from '../../anims';
 
 @Component({
   selector: 'app-project-item',
   templateUrl: './project-item.component.html',
   styleUrls: ['./project-item.component.scss'],
+  animations: [cardAnim],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectItemComponent implements OnInit {
@@ -19,10 +23,21 @@ export class ProjectItemComponent implements OnInit {
   @Output() launchUpdateDialog = new EventEmitter<void>();
   @Output() launchInviteDailog = new EventEmitter<void>();
   @Output() launchDeleteDailog = new EventEmitter<void>();
+  @HostBinding('@card') cardState = 'out';
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  @HostListener('mouseenter')
+  onMouseEnter() {
+    this.cardState = 'hover';
+  }
+
+  @HostListener('mouseleave')
+  onMouseLeave() {
+    this.cardState = 'out';
+  }
 
   onClick(ev: Event) {
     ev.preventDefault();

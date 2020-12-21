@@ -2,7 +2,7 @@ import { NgModule, SkipSelf, Optional } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from '../app-routing.module';
 
 import { SharedModule } from '../shared';
 
@@ -14,8 +14,14 @@ import { loadSvgResources } from '../utils/svg.util';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, SidebarComponent], // 只是声明了，而没有导出，没有导出的话只能在本module中使用，在其他module不能使用，在app.component.html中不能使用，需要在exports中做导出
-  imports: [HttpClientModule, BrowserAnimationsModule, SharedModule],
-  exports: [HeaderComponent, FooterComponent, SidebarComponent],
+  imports: [HttpClientModule, SharedModule, AppRoutingModule],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    SidebarComponent,
+    AppRoutingModule,
+    SharedModule,
+  ],
 })
 export class CoreModule {
   constructor(

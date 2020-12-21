@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  HostBinding,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { NewProjectComponent } from '../new-project/new-project.component';
@@ -6,21 +11,26 @@ import { InviteComponent } from './../invite/invite.component';
 import { ConfirmDialogComponent } from '../../shared';
 
 import { Project, User } from '../../domain';
-
+import { slideToRight, listAnimation } from '../../anims';
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [slideToRight, listAnimation],
 })
 export class ProjectListComponent implements OnInit {
+  @HostBinding('@routeAnim') state;
+
   projects = [
     {
+      id: 1,
       name: '热云的产品',
       desc: '这是一个热云的产品',
       coverImg: 'assets/img/covers/0.jpg',
     },
     {
+      id: 2,
       name: '热云的产品',
       desc: '这是一个热云的产品',
       coverImg: 'assets/img/covers/1.jpg',
@@ -43,6 +53,15 @@ export class ProjectListComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
       // dialogRef.removePanelClass('myapp-dark-theme');
+      this.projects = [
+        ...this.projects,
+        {
+          id: 3,
+          name: '新项目',
+          desc: '新项目',
+          coverImg: 'assets/img/covers/1.jpg',
+        },
+      ];
     });
   }
 
@@ -72,6 +91,10 @@ export class ProjectListComponent implements OnInit {
         },
       },
     });
-    dialogRef.afterClosed().subscribe((result) => console.log(result));
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+      console.log(project);
+      this.projects = this.projects.filter((p) => p.id !== 3);
+    });
   }
 }
