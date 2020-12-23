@@ -49,9 +49,10 @@ export class HomeGrandComponent implements OnInit {
     const token = new InjectionToken<string>('baseUrl');
 
     const injector = Injector.create({
-      // 在providers数组里描述这些东西用该怎样被创建
+      // 在providers数组里描述这些东西用该怎样被创建，provider用来告诉Injector你应该怎样去构造这个对象
       providers: [
         {
+          // provide是令牌或是类的形式标识它，知道要在池子里找什么东西
           provide: Product,
           useFactory: () => {
             return new Product('大米手机', 'DM-9', '黑色');

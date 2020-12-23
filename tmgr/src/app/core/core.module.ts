@@ -12,6 +12,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 import { loadSvgResources } from '../utils/svg.util';
 
+import { token } from '../services';
+
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, SidebarComponent], // 只是声明了，而没有导出，没有导出的话只能在本module中使用，在其他module不能使用，在app.component.html中不能使用，需要在exports中做导出
   imports: [HttpClientModule, SharedModule, AppRoutingModule],
@@ -22,6 +24,7 @@ import { loadSvgResources } from '../utils/svg.util';
     AppRoutingModule,
     SharedModule,
   ],
+  providers: [{ provide: token, useValue: 'https://' }],
 })
 export class CoreModule {
   constructor(

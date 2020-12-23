@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   OnInit,
+  ChangeDetectorRef,
   HostBinding,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -37,7 +38,7 @@ export class ProjectListComponent implements OnInit {
     },
   ];
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private cd: ChangeDetectorRef) {}
 
   ngOnInit(): void {}
 
@@ -62,6 +63,8 @@ export class ProjectListComponent implements OnInit {
           coverImg: 'assets/img/covers/1.jpg',
         },
       ];
+      console.log('this.projects', this.projects);
+      this.cd.markForCheck();
     });
   }
 
