@@ -22,6 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 // import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DirectiveModule } from './../directive';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    DirectiveModule,
   ],
   exports: [
     CommonModule,
@@ -65,6 +67,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    DirectiveModule,
   ],
   declarations: [ConfirmDialogComponent],
   entryComponents: [ConfirmDialogComponent],

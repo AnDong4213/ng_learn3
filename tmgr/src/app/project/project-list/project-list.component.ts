@@ -60,7 +60,7 @@ export class ProjectListComponent implements OnInit {
           id: 3,
           name: '新项目',
           desc: '新项目',
-          coverImg: 'assets/img/covers/1.jpg',
+          coverImg: 'assets/img/covers/3.jpg',
         },
       ];
       console.log('this.projects', this.projects);

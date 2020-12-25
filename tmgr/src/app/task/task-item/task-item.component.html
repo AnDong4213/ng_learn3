@@ -1,6 +1,7 @@
 <mat-list-item
   class="container"
   [@item]="widerPriority"
+  [draggable]="true"
   [ngClass]="{
     'priority-normal': item.priority === 3,
     'priority-important': item.priority === 2,
