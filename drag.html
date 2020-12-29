@@ -17,7 +17,7 @@
       .dropzone {
         width: 200px;
         height: 20px;
-        background: blueviolet;
+        background: #ccc;
         margin-bottom: 10px;
         padding: 10px;
       }
@@ -25,13 +25,13 @@
   </head>
 
   <body>
-    <div class="dropzone">
+    <div class="dropzone" id="11">
       <div id="draggable" draggable="true">This div is draggable</div>
     </div>
 
-    <div class="dropzone"></div>
-    <div class="dropzone"></div>
-    <div class="dropzone"></div>
+    <div class="dropzone" id="22"></div>
+    <div class="dropzone" id="33"></div>
+    <div class="dropzone" id="44"></div>
 
     <script>
       let dragged;
@@ -40,7 +40,7 @@
       document.addEventListener(
         "drag",
         function (event) {
-          // console.log("event1", event.target.innerHTML);
+          // console.log("event1", event.target.id);
         },
         false
       );
@@ -48,7 +48,7 @@
       document.addEventListener(
         "dragstart",
         function (event) {
-          // console.log("event2", event.target.innerHTML);
+          console.log("dragstart", event.target.id);
           // 保存拖动元素的引用(ref.)
           dragged = event.target;
           // 使其半透明
@@ -60,7 +60,7 @@
       document.addEventListener(
         "dragend",
         function (event) {
-          // console.log("event3", event.target.innerHTML);
+          console.log("dragend", event.target.id);
           // 重置透明度
           event.target.style.opacity = "";
         },
@@ -71,7 +71,7 @@
       document.addEventListener(
         "dragover",
         function (event) {
-          // console.log("event4", event.target.innerHTML);
+          console.log("dragover", event.target.id);
           // 阻止默认动作
           event.preventDefault();
         },
@@ -81,7 +81,7 @@
       document.addEventListener(
         "dragenter",
         function (event) {
-          // console.log("event5", event.target.innerHTML);
+          console.log("dragenter", event.target.id);
           // 当可拖动的元素进入可放置的目标高亮目标节点
           if (event.target.className == "dropzone") {
             event.target.style.background = "purple";
@@ -93,7 +93,7 @@
       document.addEventListener(
         "dragleave",
         function (event) {
-          // console.log("event6", event.target.innerHTML);
+          console.log("dragleave", event.target.id);
           // 当拖动元素离开可放置目标节点，重置其背景
           if (event.target.className == "dropzone") {
             event.target.style.background = "";
@@ -105,7 +105,7 @@
       document.addEventListener(
         "drop",
         function (event) {
-          console.log("event7", event.target);
+          console.log("drop", event.target);
           // 阻止默认动作（如打开一些元素的链接）
           event.preventDefault();
           // 移动拖动的元素到所选择的放置目标节点

@@ -136,4 +136,17 @@ export class TaskHomeComponent implements OnInit {
   }
 
   handleCompleteTask(task) {}
+
+  handleMove(srcData: { tag: string; data: any }, taskList) {
+    switch (srcData.tag) {
+      case 'task-item':
+        console.log('task-item');
+        break;
+      case 'task-list':
+        console.log('task-list');
+        break;
+      default:
+        break;
+    }
+  }
 }

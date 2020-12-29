@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -46,6 +48,7 @@ import { DirectiveModule } from './../directive';
     MatDatepickerModule,
     MatNativeDateModule,
     DirectiveModule,
+    FlexLayoutModule,
   ],
   exports: [
     CommonModule,
@@ -68,6 +71,7 @@ import { DirectiveModule } from './../directive';
     MatDatepickerModule,
     MatNativeDateModule,
     DirectiveModule,
+    FlexLayoutModule,
   ],
   declarations: [ConfirmDialogComponent],
   entryComponents: [ConfirmDialogComponent],
