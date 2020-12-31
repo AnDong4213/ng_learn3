@@ -14,9 +14,16 @@ import { loadSvgResources } from '../utils/svg.util';
 
 import { token } from '../services';
 
+import { ServicesModule } from '../services'; // 测试用的
+
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, SidebarComponent], // 只是声明了，而没有导出，没有导出的话只能在本module中使用，在其他module不能使用，在app.component.html中不能使用，需要在exports中做导出
-  imports: [HttpClientModule, SharedModule, AppRoutingModule],
+  imports: [
+    HttpClientModule,
+    SharedModule,
+    AppRoutingModule,
+    ServicesModule.forRoot(),
+  ],
   exports: [
     HeaderComponent,
     FooterComponent,

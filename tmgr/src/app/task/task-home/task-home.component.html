@@ -9,8 +9,9 @@
     [appDraggable]="true"
     [dragTag]="'task-list'"
     [draggedClass]="'drag-start'"
-    [dragData]="lists"
-    (dropped)="handleMove($event, lists)"
+    [dragData]="list"
+    (dropped)="handleMove($event, list)"
+    [ngStyle]="{ order: list.order }"
   >
     <app-task-header
       [header]="list.name"

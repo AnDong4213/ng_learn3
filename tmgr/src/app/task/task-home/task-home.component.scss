@@ -1,3 +1,9 @@
+app-task-list {
+  &:first-child {
+    // height: 800px;
+  }
+}
+
 .drag-start {
   opacity: 0.5;
   border: #ff525b dashed 2px;
@@ -75,4 +81,9 @@ mat-sidenav-container {
   display: flex;
   flex-direction: column;
   flex: 1
+}
+
+.test {
+  cursor: not-allowed;
+  pointer-events: auto;
 }

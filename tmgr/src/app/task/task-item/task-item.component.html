@@ -23,7 +23,7 @@
     matLine
     [matTooltip]="item.desc"
     class="content"
-    [ngClass]="{ completed: item.completed }"
+    [class.completed]="item.completed"
   >
     {{ item.desc }}
   </div>
@@ -32,6 +32,10 @@
       {{ item.dueDate | date: "yy-MM-dd" }}
     </span>
     <mat-icon *ngIf="item.reminder" class="alarm">alarm</mat-icon>
+    <!-- *是语法糖 -->
+    <!-- <ng-template [ngIf]="item.reminder">
+      <mat-icon class="alarm">alarm</mat-icon>
+    </ng-template> -->
   </div>
   <mat-icon matListAvatar class="avatar" [svgIcon]="avatar"></mat-icon>
 </mat-list-item>
