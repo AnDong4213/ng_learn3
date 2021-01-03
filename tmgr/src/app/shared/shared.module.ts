@@ -27,6 +27,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 // import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DirectiveModule } from './../directive';
+import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
 
 @NgModule({
   imports: [
@@ -80,8 +81,9 @@ import { DirectiveModule } from './../directive';
     MatFormFieldModule,
     DirectiveModule,
     FlexLayoutModule,
+    ImageListSelectComponent,
   ],
-  declarations: [ConfirmDialogComponent],
+  declarations: [ConfirmDialogComponent, ImageListSelectComponent],
   entryComponents: [ConfirmDialogComponent],
 })
 export class SharedModule {}

@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit {
     // 动态验证器
     // if ()
     // this.form.controls['email'].setValidators(this.validate);
+
+    // this.form.setValue()
   }
 
   validate(c: FormControl): { [key: string]: any } {
