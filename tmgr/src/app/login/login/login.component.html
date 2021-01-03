@@ -1,5 +1,11 @@
-<form>
-  <mat-card>
+<form
+  fxLayout="row"
+  fxLayout.xs="column"
+  fxLayoutAlign="center"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit(form, $event)"
+>
+  <mat-card fxFlex="0 1 20rem">
     <mat-card-header>
       <mat-card-title>登录：</mat-card-title>
     </mat-card-header>
@@ -11,17 +17,35 @@
         class="full-width"
       >
         <!-- <span matPrefix>wang</span> -->
-        <input matInput type="text" placeholder="您的Email" />
+        <input
+          matInput
+          type="text"
+          placeholder="您的Email"
+          formControlName="email"
+        />
         <!-- <span matSuffix>@gmail.com</span>
         <mat-hint align="end">右边</mat-hint> -->
+        <mat-error>{{ form.controls["email"].errors | json }}</mat-error>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput type="password" placeholder="您的密码" />
+        <input
+          matInput
+          type="password"
+          placeholder="您的密码"
+          formControlName="password"
+        />
       </mat-form-field>
       <!-- <button mat-button type="button">登录</button> -->
       <!-- <button mat-fab type="button">登录</button> -->
       <!-- <button mat-mini-fab type="button">登录</button> -->
-      <button mat-raised-button type="button" color="primary">登录</button>
+      <button
+        mat-raised-button
+        type="submit"
+        color="primary"
+        [disabled]="!form.valid"
+      >
+        登录
+      </button>
     </mat-card-content>
     <mat-card-actions class="text-right">
       <p>还没有账户? <a routerLink="/register">注册</a></p>
@@ -29,7 +53,7 @@
     </mat-card-actions>
   </mat-card>
 
-  <mat-card>
+  <mat-card mat-card fxFlex="0 1 20rem">
     <mat-card-header>
       <mat-card-title>每日佳句</mat-card-title>
       <mat-card-subtitle>人生天地之间，若白驹过隙，忽然而已</mat-card-subtitle>

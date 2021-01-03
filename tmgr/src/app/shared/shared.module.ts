@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -20,6 +21,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
@@ -29,6 +31,8 @@ import { DirectiveModule } from './../directive';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
@@ -47,11 +51,14 @@ import { DirectiveModule } from './../directive';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatFormFieldModule,
     DirectiveModule,
     FlexLayoutModule,
   ],
   exports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
@@ -70,6 +77,7 @@ import { DirectiveModule } from './../directive';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatFormFieldModule,
     DirectiveModule,
     FlexLayoutModule,
   ],
