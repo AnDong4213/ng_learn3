@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './login/login.module';
 import { ProjectModule } from './project/project.module';
 import { TaskModule } from './task/task.module';
+import { RxjsModule } from './rxjs';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { TaskModule } from './task/task.module';
     LoginModule,
     ProjectModule,
     TaskModule,
+    RxjsModule,
 
     BrowserAnimationsModule,
   ],
