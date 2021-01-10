@@ -56,12 +56,9 @@
   <mat-card mat-card fxFlex="0 1 20rem">
     <mat-card-header>
       <mat-card-title>每日佳句</mat-card-title>
-      <mat-card-subtitle>人生天地之间，若白驹过隙，忽然而已</mat-card-subtitle>
+      <mat-card-subtitle>{{ (quote$ | async)?.cn }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="assets/img/quote.jpg" alt="" />
-    <mat-card-content>
-      Between the world of life, if the white horse crosses the gap, suddenly it
-      is already
-    </mat-card-content>
+    <img mat-card-image [src]="(quote$ | async)?.pic" alt="" />
+    <mat-card-content>{{ (quote$ | async)?.en }}</mat-card-content>
   </mat-card>
 </form>

@@ -5,6 +5,10 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
+import { Observable } from 'rxjs';
+
+import { QuoteService } from './../../services';
+import { Quote } from '../../domain';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +17,14 @@ import {
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+  quote$: Observable<Quote>;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private quoteService: QuoteService) {
+    this.quote$ = this.quoteService.getQuote();
+    /* this.quoteService.getQuote().subscribe((q) => {
+      console.log(q);
+    }); */
+  }
 
   ngOnInit() {
     this.form = this.fb.group({

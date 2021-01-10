@@ -31,7 +31,14 @@ import { ServicesModule } from '../services'; // 测试用的
     AppRoutingModule,
     SharedModule,
   ],
-  providers: [{ provide: token, useValue: 'https://' }],
+  providers: [
+    {
+      provide: token,
+      useValue: {
+        uri: 'http://localhost:3002',
+      },
+    },
+  ],
 })
 export class CoreModule {
   constructor(

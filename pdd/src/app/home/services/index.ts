@@ -3,4 +3,4 @@ import { InjectionToken } from '@angular/core';
 export * from './home.service';
 
 export const token = new InjectionToken<string>('baseUrl');
-console.log('token', token);
+// console.log('token', token);

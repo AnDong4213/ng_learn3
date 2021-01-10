@@ -1,1 +1,1 @@
-export const BASE_CONFIG = 'BASE_CONFIG';
+export const BASE_CONFIG_URL = 'BASE_CONFIG_URL';
