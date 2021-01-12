@@ -1,6 +1,32 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { fromEvent, combineLatest, of, timer, zip, from } from 'rxjs';
-import { map, pluck, delay, startWith } from 'rxjs/operators';
+import {
+  fromEvent,
+  combineLatest,
+  of,
+  timer,
+  zip,
+  from,
+  interval,
+  pipe,
+  never,
+  empty,
+} from 'rxjs';
+import {
+  map,
+  pluck,
+  delay,
+  startWith,
+  take,
+  tap,
+  filter,
+  first,
+  last,
+  skip,
+  scan,
+  reduce,
+  every,
+} from 'rxjs/operators';
+import { discardOddDoubleEven } from '../../utils';
 
 @Component({
   selector: 'app-rxjs-learn',
@@ -35,13 +61,17 @@ export class RxjsLearnComponent implements OnInit {
       pluck('target', 'value')
     ); */
     // const height$ = from([1, 2, 3, 4]);
-    const height$ = of(10, 20);
+    const height$ = from([10, 20]);
+
+    // const height$ = of(10, 20);
+    // const height$ = of({ id: 1, value: 20 }, { id: 2, value: 30 });
     const width$ = fromEvent(this.widthDom.nativeElement, 'input').pipe(
       pluck('target', 'value')
     );
     // const area$ = combineLatest(height$, width$, (l, w) => l * w);    // Deprecated
     const area$ = combineLatest([height$, width$]).pipe(
       map((val) => {
+        console.log('height$', val);
         return (val[0] as number) * (val[1] as number);
       })
     );
@@ -60,6 +90,16 @@ export class RxjsLearnComponent implements OnInit {
     combined.subscribe((value) => console.log(value)); */
 
     console.log('--------------------------------------------');
+
+    // const rxjs2 = interval(1000).pipe(take(5));
+    // const rxjs2 = timer(1000, 2000).pipe(take(2));
+    const rxjs2 = interval(100).pipe(take(16), discardOddDoubleEven());
+
+    rxjs2.subscribe(
+      (val) => console.log(val),
+      (err) => console.log('Error: ' + err),
+      () => console.log('I am complete')
+    );
   }
 
   rxTest2() {}

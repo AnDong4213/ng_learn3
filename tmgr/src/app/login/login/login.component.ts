@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -9,18 +9,23 @@ import { Observable } from 'rxjs';
 
 import { QuoteService } from './../../services';
 import { Quote } from '../../domain';
+import { debug } from '../../utils';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
   quote$: Observable<Quote>;
 
   constructor(private fb: FormBuilder, private quoteService: QuoteService) {
-    this.quote$ = this.quoteService.getQuote();
+    this.quote$ = this.quoteService
+      .getQuote()
+      .pipe(debug('自定义operators')) as Observable<Quote>;
+
     /* this.quoteService.getQuote().subscribe((q) => {
       console.log(q);
     }); */
