@@ -10,6 +10,7 @@ export const debug = (message: string) => {
           if (!environment.production) {
             console.log(message);
           }
+          // value.en = 'uuu';
           observer.next(value);
         },
         error(err) {

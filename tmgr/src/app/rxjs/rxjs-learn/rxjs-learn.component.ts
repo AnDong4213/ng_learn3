@@ -25,6 +25,7 @@ import {
   scan,
   reduce,
   every,
+  debounceTime,
 } from 'rxjs/operators';
 import { discardOddDoubleEven } from '../../utils';
 
@@ -35,6 +36,7 @@ import { discardOddDoubleEven } from '../../utils';
 })
 export class RxjsLearnComponent implements OnInit {
   @ViewChild('inputRef', { static: true }) inputDom: ElementRef;
+  @ViewChild('inputRef2', { static: true }) inputDom2: ElementRef;
   @ViewChild('heightRef', { static: true }) heightDom: ElementRef;
   @ViewChild('widthRef', { static: true }) widthDom: ElementRef;
 
@@ -93,13 +95,22 @@ export class RxjsLearnComponent implements OnInit {
 
     // const rxjs2 = interval(1000).pipe(take(5));
     // const rxjs2 = timer(1000, 2000).pipe(take(2));
-    const rxjs2 = interval(100).pipe(take(16), discardOddDoubleEven());
+
+    // discardOddDoubleEven自定义的操作符
+    /* const rxjs2 = interval(100).pipe(take(16), discardOddDoubleEven());
 
     rxjs2.subscribe(
       (val) => console.log(val),
       (err) => console.log('Error: ' + err),
       () => console.log('I am complete')
+    ); */
+
+    const rxjs3 = fromEvent(this.inputDom2.nativeElement, 'input').pipe(
+      debounceTime(500)
     );
+    rxjs3.subscribe((ev: KeyboardEvent) => {
+      console.log((ev.target as HTMLInputElement).value);
+    });
   }
 
   rxTest2() {}
